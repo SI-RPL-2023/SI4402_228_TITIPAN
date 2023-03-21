@@ -5,12 +5,12 @@ Titipan is a trusted service provider for office, house, and warehouse relocatio
 # About Us
 Group of 228 from class SI-44-02, Bachelor of Information Systems at Telkom University. We have 6 members, including:
 
-1. Muh Ario Adriansyah (1202200020) ``Project Manager``
-2. Citra Alivia (1202200227) ``Analyst``
-3. Afifah Hasna Wafiyah (1202202294) ``Programmer`` 
-4. Oktaviana Zahra A (1202204260) ``Programmer``
-5. Imam Mukhlash (1202204032) ``Programmer``
-6. M. Hanan Rafif Farizta (1202204042) ``Programmer`` 
+1. [Muh Ario Adriansyah](https://www.instagram.com/madrioo_/) (1202200020) ``Project Manager``
+2. [Citra Alivia](https://www.instagram.com/Cttraaaaa/) (1202200227) ``Analyst``
+3. [Afifah Hasna Wafiyah](https://www.instagram.com/afiffaaah/) (1202202294) ``Programmer`` 
+4. [Oktaviana Zahra A](https://www.instagram.com/okktavi/) (1202204260) ``Programmer``
+5. [Imam Mukhlash](https://www.instagram.com/nierimam/) (1202204032) ``Programmer``
+6. [M. Hanan Rafif Farizta](https://www.instagram.com/hananfarizta/) (1202204042) ``Programmer`` 
 
 
 # Repository Structure
