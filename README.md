@@ -18,7 +18,7 @@ Group of 228 from class SI-44-02, Bachelor of Information Systems at Telkom Univ
 The repository is structured as follows:
 
 -   `main` is main branch of the repository and contains the latest stable version of the code.
--   `dev` is the development branch of the repository and contains the latest development version of the code.
+-   `development` is the development branch of the repository and contains the latest development version of the code.
 -   `feature/feature_name` branches are used to develop new features and are merged into dev when they are ready.
 -   commits formatted as `feat/feature_name` are used to fix bugs in the code and are merged into dev when they are ready.
 
@@ -74,7 +74,7 @@ php artisan migrate
 php artisan storage:link
 ```
 
-- run the server
+- Run the server
 
 ```bash
 php artisan serve
