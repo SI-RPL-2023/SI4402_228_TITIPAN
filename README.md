@@ -3,7 +3,7 @@
 Titipan is a trusted service provider for office, house, and warehouse relocations. In addition to relocation services, Titipan also offers storage services and delivery services throughout Indonesia. This project built with PHP framework named [Laravel](https://laravel.com/).
 
 # About Us
-Group of 228 from class SI-44-02, Bachelor of Information Systems at Telkom University. We have 4 members, including:
+Group of 228 from class SI-44-02, Bachelor of Information Systems at Telkom University. We have 6 members, including:
 
 1. Citra Alivia (1202200227)
 2. Afifah Hasna Wafiyah (1202202294)
