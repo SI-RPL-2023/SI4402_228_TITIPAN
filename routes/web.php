@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('loginregister');
 });
+
+Route::get('/landingpage', function () {
+    return view('landingpage');
+});
