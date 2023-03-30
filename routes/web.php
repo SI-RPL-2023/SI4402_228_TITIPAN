@@ -20,3 +20,7 @@ Route::get('/', function () {
 Route::get('/loginregister', function () {
     return view('loginregister');
 });
+
+Route::get('/jasapindahan', function () {
+    return view('jasapindahan');
+});
