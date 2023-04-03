@@ -12,17 +12,17 @@
         <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
         <nav id="navbar" class="navbar">
             <ul>
-                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="/" class="active">Home</a></li>
                 <li>
-                    <a href="pindahan.html">Jasa Pindahan</a>
+                    <a href="jasapindahan">Jasa Pindahan</a>
                 </li>
                 <li>
-                    <a href="penyimpanan.html">Jasa Penyimpan</a>
+                    <a href="jasapenyimpanan">Jasa Penyimpan</a>
                 </li>
                 <li>
-                    <a href="pengiriman.html">Jasa Pengiriman</a>
+                    <a href="jasapengiriman">Jasa Pengiriman</a>
                 </li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="contact">Contact</a></li>
             </ul>
         </nav>
         <!-- .navbar -->
