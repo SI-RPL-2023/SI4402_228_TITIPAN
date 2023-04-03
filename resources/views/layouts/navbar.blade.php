@@ -16,8 +16,8 @@
                 <li>
                     <a href="jasapindahan">Jasa Pindahan</a>
                 </li>
-                <li>
-                    <a href="jasapenyimpanan">Jasa Penyimpan</a>
+                <li></li>
+                <a href="jasapenyimpanan">Jasa Penyimpan</a>
                 </li>
                 <li>
                     <a href="jasapengiriman">Jasa Pengiriman</a>
