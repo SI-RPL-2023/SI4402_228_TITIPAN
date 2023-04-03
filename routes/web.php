@@ -28,3 +28,7 @@ Route::get('/jasapindahan', function () {
 Route::get('/jasapengiriman', function () {
     return view('jasapengiriman');
 });
+
+Route::get('/jasapenyimpanan', function () {
+    return view('jasapenyimpanan');
+});
