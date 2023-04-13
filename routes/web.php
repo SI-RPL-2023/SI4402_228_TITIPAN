@@ -32,3 +32,7 @@ Route::get('/jasapengiriman', function () {
 Route::get('/jasapenyimpanan', function () {
     return view('jasapenyimpanan');
 });
+
+Route::get('/contact', function () {
+    return view('contact');
+});
