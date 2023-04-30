@@ -50,9 +50,25 @@ Route::get('/profile', function () {
     ]);
 });
 
+
 // Route::get('/login', [LoginController::class, 'index']);
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
+Route::get('/contact', function () {
+    return view('contact');
+});
+
+Route::get('/basicplan', function () {
+    return view('basicplan');
+});
+
+Route::get('/premiumplan', function () {
+    return view('premiumplan');
+});
+
+Route::get('/advanceplan', function () {
+    return view('advanceplan');
+});
