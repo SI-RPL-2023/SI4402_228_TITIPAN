@@ -62,13 +62,22 @@ Route::get('/contact', function () {
 });
 
 Route::get('/basicplan', function () {
-    return view('basicplan');
+    return view('basicplan', [
+        "title" => "Basic Plan",
+        'active' => 'basicplan',
+    ]);
 });
 
 Route::get('/premiumplan', function () {
-    return view('premiumplan');
+    return view('premiumplan', [
+        "title" => "Premium Plan",
+        'active' => 'premiumplan',
+    ]);
 });
 
 Route::get('/advanceplan', function () {
-    return view('advanceplan');
+    return view('advanceplan', [
+        "title" => "Advance Plan",
+        'active' => 'advanceplan',
+    ]);
 });
