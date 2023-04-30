@@ -61,8 +61,8 @@
                 <div class="col-lg-4">
                     <div class="services-list">
                         <a href="jasapindahan">Jasa Pindahan</a>
+                        <a href="jasapenyimpanan">Jasa Penyimpanan</a>
                         <a href="jasapengiriman" class="active">Jasa Pengiriman</a>
-                        <a href="penyimpanan">Jasa Penyimpanan</a>
                     </div>
 
                     <h4>Tiba-tiba pindahan</h4>
