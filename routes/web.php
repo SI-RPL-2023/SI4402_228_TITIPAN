@@ -36,3 +36,15 @@ Route::get('/jasapenyimpanan', function () {
 Route::get('/contact', function () {
     return view('contact');
 });
+
+Route::get('/basicplan', function () {
+    return view('basicplan');
+});
+
+Route::get('/premiumplan', function () {
+    return view('premiumplan');
+});
+
+Route::get('/advanceplan', function () {
+    return view('advanceplan');
+});
