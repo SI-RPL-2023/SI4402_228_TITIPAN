@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,21 +16,43 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', function () {
-    return view('landingpage');
-});
-
-Route::get('/loginregister', function () {
-    return view('loginregister');
+    return view('landingpage', [
+        "title" => "Home",
+        'active' => 'landingpage',
+    ]);
 });
 
 Route::get('/jasapindahan', function () {
-    return view('jasapindahan');
+    return view('jasapindahan', [
+        "title" => "Jasa Pindahan",
+        'active' => 'jasapindahan',
+    ]);
 });
 
 Route::get('/jasapengiriman', function () {
-    return view('jasapengiriman');
+    return view('jasapengiriman', [
+        "title" => "Jasa Pengiriman",
+        'active' => 'jasapengiriman',
+    ]);
 });
 
 Route::get('/jasapenyimpanan', function () {
-    return view('jasapenyimpanan');
+    return view('jasapenyimpanan', [
+        "title" => "Jasa Penyimpanan",
+        'active' => 'jasapenyimpanan',
+    ]);
 });
+
+Route::get('/profile', function () {
+    return view('profile/index', [
+        "title" => "Profile",
+        'active' => 'profile/index',
+    ]);
+});
+
+// Route::get('/login', [LoginController::class, 'index']);
+
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'register']);

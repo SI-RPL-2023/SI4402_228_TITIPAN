@@ -157,6 +157,10 @@ section {
     padding: 20px 0;
 }
 
+a.btn.dropdown-toggle::after {
+    color: #fff;
+}
+
 .breadcrumbs nav ol {
     display: flex;
     flex-wrap: wrap;
