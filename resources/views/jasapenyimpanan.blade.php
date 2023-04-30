@@ -25,72 +25,90 @@
 
 <main id="main">
 
-        <!-- ======= Breadcrumbs ======= -->
-        <div class="breadcrumbs">
-            <div class="page-header d-flex align-items-center" style="background-image: url('images/page-header.jpg');">
-                <div class="container position-relative">
-                    <div class="row d-flex justify-content-center">
-                        <div class="col-lg-6 text-center">
-                            <h2>Jasa Penyimpanan</h2>
-                            <p>Titipan melayani jasa penyimpanan, dimana titipan akan menyediakan fasilitas untuk menyimpan barang-barang pribadi atau bisnis secara temporari atau jangka panjang. Fasilitas ini biasanya terdiri dari unit-unit penyimpanan
-                                yang terlindung dan dilengkapi dengan sistem keamanan. Jasa penyimpanan sangat berguna bagi individu atau bisnis yang membutuhkan ruang tambahan untuk menyimpan barang-barang mereka selama periode tertentu.</p>
-                        </div>
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+        <div class="page-header d-flex align-items-center" style="background-image: url('images/page-header.jpg');">
+            <div class="container position-relative">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-lg-6 text-center">
+                        <h2>Jasa Penyimpanan</h2>
+                        <p>Titipan melayani jasa penyimpanan, dimana titipan akan menyediakan fasilitas untuk menyimpan
+                            barang-barang pribadi atau bisnis secara temporari atau jangka panjang. Fasilitas ini
+                            biasanya terdiri dari unit-unit penyimpanan
+                            yang terlindung dan dilengkapi dengan sistem keamanan. Jasa penyimpanan sangat berguna bagi
+                            individu atau bisnis yang membutuhkan ruang tambahan untuk menyimpan barang-barang mereka
+                            selama periode tertentu.</p>
                     </div>
                 </div>
             </div>
-            <nav>
-                <div class="container">
-                    <ol>
-                        <li><a href="index.html">Home</a></li>
-                        <li>Service Details</li>
-                    </ol>
-                </div>
-            </nav>
         </div>
-        <!-- End Breadcrumbs -->
+        <nav>
+            <div class="container">
+                <ol>
+                    <li><a href="index.html">Home</a></li>
+                    <li>Service Details</li>
+                </ol>
+            </div>
+        </nav>
+    </div>
+    <!-- End Breadcrumbs -->
 
-        <!-- ======= Service Details Section ======= -->
-        <section id="service-details" class="service-details">
-            <div class="container" data-aos="fade-up">
+    <!-- ======= Service Details Section ======= -->
+    <section id="service-details" class="service-details">
+        <div class="container" data-aos="fade-up">
 
-                <div class="row gy-4">
+            <div class="row gy-4">
 
-                    <div class="col-lg-4">
-                        <div class="services-list">
-                            <a href="pindahan.html">Jasa Pindahan</a>
-                            <a href="pengiriman.html">Jasa Pengiriman</a>
-                            <a href="penyimpanan.html" class="active">Jasa Penyimpanan</a>
-                        </div>
-
-                        <h4>Tiba-tiba pindahan</h4>
-                        <p>Titipan adalah layanan jasa pindahan kantor, rumah, gudang terpercaya. Selain pindahan titipan juga menyediakan jasa penyimpanan barang dan jasa pengiriman ke seluruh Indonesia.</p>
+                <div class="col-lg-4">
+                    <div class="services-list">
+                        <a href="jasapindahan">Jasa Pindahan</a>
+                        <a href="jasapenyimpanan" class="active">Jasa Penyimpanan</a>
+                        <a href="jasapengiriman">Jasa Pengiriman</a>
                     </div>
 
-                    <div class=" col-lg-8 ">
-                        <img src="{{asset('images/penyimpanan.jpg')}}" alt=" " class="img-fluid services-img ">
-                        <h3>Sebelum menggunakan layanan kami yuk kenali apa itu "Jasa penyimpanan/penitipan barang" dan apa saja yang kamu dapatkan ketika menggunakan layanan ini.</h3>
-                        <p>
-                            Jasa penyimpanan adalah layanan yang menyediakan tempat penyimpanan sementara atau jangka panjang untuk barang atau benda milik seseorang atau perusahaan. Jasa penyimpanan biasanya diberikan oleh perusahaan penyedia layanan penyimpanan yang menyediakan ruang penyimpanan yang aman dan teratur untuk menyimpan berbagai jenis barang.
-                        </p>
-                        <ul>
-                            <li><i class="bi bi-check-circle"></i> <span>Tersedia layanan packing barang.</span></li>
-                            <li><i class="bi bi-check-circle"></i> <span>Tersedia layanan penataan barang.</span></li>
-                            <li><i class="bi bi-check-circle"></i> <span>Gratis biaya penjemputan ke lokasi tujuan.</span></li>
-                        </ul>
-                        <p>
-                            Jasa penyimpanan dapat sangat bermanfaat bagi orang atau perusahaan yang membutuhkan ruang tambahan untuk menyimpan barang-barang mereka yang tidak dapat disimpan di rumah atau kantor mereka, atau jika mereka membutuhkan penyimpanan sementara selama proses pemindahan atau renovasi. Jasa penyimpanan juga dapat membantu dalam hal perlindungan dan keamanan barang, karena penyedia jasa penyimpanan biasanya menyediakan fasilitas yang dilengkapi dengan keamanan yang ketat dan sistem pengawasan yang canggih.
-                        </p>
-                        <p>
-                            Beberapa perusahaan penyedia jasa penyimpanan juga menyediakan layanan pengambilan dan pengiriman barang, sehingga memudahkan pelanggan untuk menyimpan atau mengambil barang mereka dari tempat penyimpanan. Harga jasa penyimpanan biasanya bervariasi tergantung pada ukuran dan jenis ruang penyimpanan yang disewa serta durasi penyimpanan.
-                        </p>
-                    </div>
+                    <h4>Tiba-tiba pindahan</h4>
+                    <p>Titipan adalah layanan jasa pindahan kantor, rumah, gudang terpercaya. Selain pindahan titipan
+                        juga menyediakan jasa penyimpanan barang dan jasa pengiriman ke seluruh Indonesia.</p>
+                </div>
 
+                <div class=" col-lg-8 ">
+                    <img src="{{asset('images/penyimpanan.jpg')}}" alt=" " class="img-fluid services-img ">
+                    <h3>Sebelum menggunakan layanan kami yuk kenali apa itu "Jasa penyimpanan/penitipan barang" dan apa
+                        saja yang kamu dapatkan ketika menggunakan layanan ini.</h3>
+                    <p>
+                        Jasa penyimpanan adalah layanan yang menyediakan tempat penyimpanan sementara atau jangka
+                        panjang untuk barang atau benda milik seseorang atau perusahaan. Jasa penyimpanan biasanya
+                        diberikan oleh perusahaan penyedia layanan penyimpanan yang menyediakan ruang penyimpanan yang
+                        aman dan teratur untuk menyimpan berbagai jenis barang.
+                    </p>
+                    <ul>
+                        <li><i class="bi bi-check-circle"></i> <span>Tersedia layanan packing barang.</span></li>
+                        <li><i class="bi bi-check-circle"></i> <span>Tersedia layanan penataan barang.</span></li>
+                        <li><i class="bi bi-check-circle"></i> <span>Gratis biaya penjemputan ke lokasi tujuan.</span>
+                        </li>
+                    </ul>
+                    <p>
+                        Jasa penyimpanan dapat sangat bermanfaat bagi orang atau perusahaan yang membutuhkan ruang
+                        tambahan untuk menyimpan barang-barang mereka yang tidak dapat disimpan di rumah atau kantor
+                        mereka, atau jika mereka membutuhkan penyimpanan sementara selama proses pemindahan atau
+                        renovasi. Jasa penyimpanan juga dapat membantu dalam hal perlindungan dan keamanan barang,
+                        karena penyedia jasa penyimpanan biasanya menyediakan fasilitas yang dilengkapi dengan keamanan
+                        yang ketat dan sistem pengawasan yang canggih.
+                    </p>
+                    <p>
+                        Beberapa perusahaan penyedia jasa penyimpanan juga menyediakan layanan pengambilan dan
+                        pengiriman barang, sehingga memudahkan pelanggan untuk menyimpan atau mengambil barang mereka
+                        dari tempat penyimpanan. Harga jasa penyimpanan biasanya bervariasi tergantung pada ukuran dan
+                        jenis ruang penyimpanan yang disewa serta durasi penyimpanan.
+                    </p>
                 </div>
 
             </div>
-        </section>
-        <!-- End Service Details Section -->
 
-    </main>
-    <!-- End #main -->
+        </div>
+    </section>
+    <!-- End Service Details Section -->
+
+</main>
+<!-- End #main -->
 @endsection
