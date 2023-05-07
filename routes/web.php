@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,15 +50,32 @@ Route::get('/profile', function () {
     ]);
 });
 
-
 // Route::get('/login', [LoginController::class, 'index']);
+// Route::get('/register', [RegisterController::class, 'index']);
+// Route::get('/sesi/login', [SessionController::class, 'login']);
 
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'login']);
-Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-Route::post('/register', [RegisterController::class, 'register']);
+Route::middleware(['guest'])->group(function () {
+    Route::get('/sesi', [SessionController::class, 'index'])->name('login');
+    Route::match (['get', 'post'], '/sesi/login', [SessionController::class, 'login']);
+
+    Route::get('/sesi/register', [SessionController::class, 'register']);
+    Route::match (['get', 'post'], '/sesi/create', [SessionController::class, 'create']);
+});
+
+Route::get('/home', function () {
+    return redirect('/');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'index']);
+    Route::get('/sesi/logout', [SessionController::class, 'logout']);
+});
+
 Route::get('/contact', function () {
-    return view('contact');
+    return view('contact', [
+        "title" => "Contact",
+        'active' => 'contact',
+    ]);
 });
 
 Route::get('/basicplan', function () {
