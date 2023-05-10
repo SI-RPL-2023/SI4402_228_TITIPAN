@@ -70,6 +70,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [SessionController::class, 'profile']);
     Route::get('/admin', [AdminController::class, 'index']);
     Route::get('/sesi/logout', [SessionController::class, 'logout']);
+    Route::get('/detail-pembayaran', [SessionController::class, 'DetailPembayaran']);
+    Route::get('/pembayaran', [SessionController::class, 'pembayaran']);
+
 });
 
 Route::get('/contact', function () {

@@ -115,4 +115,18 @@ class SessionController extends Controller
 
         return 123;
     }
+
+    public function Pembayaran()
+    {
+        return view('/pembayaran', [
+            'title' => 'Pembayaran',
+        ]);
+    }
+
+    public function DetailPembayaran()
+    {
+        return view('/detail-pembayaran', [
+            'title' => 'Detail Pembayaran',
+        ]);
+    }
 }
