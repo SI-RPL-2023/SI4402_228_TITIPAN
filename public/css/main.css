@@ -1,13 +1,11 @@
 /* Fonts */
 
 :root {
-    --font-default: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto,
-        "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
-        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-        "Noto Color Emoji";
+    --font-default: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-primary: "Inter", sans-serif;
     --font-secondary: "Poppins", sans-serif;
 }
+
 
 /* Colors */
 
@@ -17,11 +15,13 @@
     --color-secondary: #0e1d34;
 }
 
+
 /* Smooth scroll behavior */
 
 :root {
     scroll-behavior: smooth;
 }
+
 
 /*--------------------------------------------------------------
 # General
@@ -50,6 +50,7 @@ h5,
 h6 {
     font-family: var(--font-primary);
 }
+
 
 /*--------------------------------------------------------------
 # Sections & Section Header
@@ -122,6 +123,7 @@ section {
     }
 }
 
+
 /*--------------------------------------------------------------
 # Breadcrumbs
 --------------------------------------------------------------*/
@@ -181,16 +183,17 @@ a.btn.dropdown-toggle::after {
     text-decoration: underline;
 }
 
-.breadcrumbs nav ol li + li {
+.breadcrumbs nav ol li+li {
     padding-left: 10px;
 }
 
-.breadcrumbs nav ol li + li::before {
+.breadcrumbs nav ol li+li::before {
     display: inline-block;
     padding-right: 10px;
     color: #4278cc;
     content: "/";
 }
+
 
 /*--------------------------------------------------------------
 # Scroll top button
@@ -226,6 +229,7 @@ a.btn.dropdown-toggle::after {
     opacity: 1;
 }
 
+
 /*--------------------------------------------------------------
 # Preloader
 --------------------------------------------------------------*/
@@ -247,8 +251,7 @@ a.btn.dropdown-toggle::after {
     position: absolute;
     border: 4px solid var(--color-primary);
     border-radius: 50%;
-    -webkit-animation: animate-preloader 2s cubic-bezier(0, 0.2, 0.8, 1)
-        infinite;
+    -webkit-animation: animate-preloader 2s cubic-bezier(0, 0.2, 0.8, 1) infinite;
     animation: animate-preloader 2s cubic-bezier(0, 0.2, 0.8, 1) infinite;
 }
 
@@ -291,6 +294,7 @@ a.btn.dropdown-toggle::after {
     }
 }
 
+
 /*--------------------------------------------------------------
 # Disable aos animation delay on mobile devices
 --------------------------------------------------------------*/
@@ -300,6 +304,7 @@ a.btn.dropdown-toggle::after {
         transition-delay: 0 !important;
     }
 }
+
 
 /*--------------------------------------------------------------
 # Header
@@ -329,6 +334,7 @@ a.btn.dropdown-toggle::after {
     color: #fff;
     font-family: var(--font-primary);
 }
+
 
 /*--------------------------------------------------------------
 # Desktop Navigation
@@ -370,7 +376,7 @@ a.btn.dropdown-toggle::after {
     .navbar a:hover,
     .navbar .active,
     .navbar .active:focus,
-    .navbar li:hover > a {
+    .navbar li:hover>a {
         color: #fff;
     }
     .navbar .get-a-quote,
@@ -416,10 +422,10 @@ a.btn.dropdown-toggle::after {
     }
     .navbar .dropdown ul a:hover,
     .navbar .dropdown ul .active:hover,
-    .navbar .dropdown ul li:hover > a {
+    .navbar .dropdown ul li:hover>a {
         color: var(--color-primary);
     }
-    .navbar .dropdown:hover > ul {
+    .navbar .dropdown:hover>ul {
         opacity: 1;
         top: 100%;
         visibility: visible;
@@ -429,7 +435,7 @@ a.btn.dropdown-toggle::after {
         left: calc(100% - 30px);
         visibility: hidden;
     }
-    .navbar .dropdown .dropdown:hover > ul {
+    .navbar .dropdown .dropdown:hover>ul {
         opacity: 1;
         top: 0;
         left: 100%;
@@ -441,7 +447,7 @@ a.btn.dropdown-toggle::after {
     .navbar .dropdown .dropdown ul {
         left: -90%;
     }
-    .navbar .dropdown .dropdown:hover > ul {
+    .navbar .dropdown .dropdown:hover>ul {
         left: -100%;
     }
 }
@@ -452,6 +458,7 @@ a.btn.dropdown-toggle::after {
         display: none;
     }
 }
+
 
 /*--------------------------------------------------------------
 # Mobile Navigation
@@ -500,7 +507,7 @@ a.btn.dropdown-toggle::after {
     .navbar a:hover,
     .navbar .active,
     .navbar .active:focus,
-    .navbar li:hover > a {
+    .navbar li:hover>a {
         color: #fff;
     }
     .navbar .get-a-quote,
@@ -525,8 +532,8 @@ a.btn.dropdown-toggle::after {
         transition: all 0.5s ease-in-out;
         border: 1px solid #117181;
     }
-    .navbar .dropdown > .dropdown-active,
-    .navbar .dropdown .dropdown > .dropdown-active {
+    .navbar .dropdown>.dropdown-active,
+    .navbar .dropdown .dropdown>.dropdown-active {
         display: block;
     }
     .mobile-nav-show {
@@ -563,6 +570,7 @@ a.btn.dropdown-toggle::after {
         z-index: 9996;
     }
 }
+
 
 /*--------------------------------------------------------------
 # Featured Services Section
@@ -625,6 +633,7 @@ a.btn.dropdown-toggle::after {
     color: var(--color-primary);
 }
 
+
 /*--------------------------------------------------------------
 # About Us Section
 --------------------------------------------------------------*/
@@ -672,10 +681,7 @@ a.btn.dropdown-toggle::after {
 .about .play-btn {
     width: 94px;
     height: 94px;
-    background: radial-gradient(
-        var(--color-primary) 50%,
-        rgba(190, 194, 194, 0.99) 52%
-    );
+    background: radial-gradient( var(--color-primary) 50%, rgba(190, 194, 194, 0.99) 52%);
     border-radius: 50%;
     display: block;
     position: absolute;
@@ -767,6 +773,7 @@ a.btn.dropdown-toggle::after {
     }
 }
 
+
 /*--------------------------------------------------------------
 # Services Section
 --------------------------------------------------------------*/
@@ -817,13 +824,13 @@ a.btn.dropdown-toggle::after {
     transform: scale(1.1);
 }
 
+
 /*--------------------------------------------------------------
 # Call To Action Section
 --------------------------------------------------------------*/
 
 .call-to-action {
-    background: linear-gradient(rgba(14, 29, 52, 0.6), rgba(14, 29, 52, 0.8)),
-        url("../images/cta-bg.jpg") center center;
+    background: linear-gradient(rgba(14, 29, 52, 0.6), rgba(14, 29, 52, 0.8)), url("../images/cta-bg.jpg") center center;
     background-size: cover;
     padding: 100px 0;
 }
@@ -863,6 +870,7 @@ a.btn.dropdown-toggle::after {
     border: 2px solid var(--color-primary);
 }
 
+
 /*--------------------------------------------------------------
 # Features Section
 --------------------------------------------------------------*/
@@ -871,12 +879,12 @@ a.btn.dropdown-toggle::after {
     padding-top: 80px;
 }
 
-.features .features-item + .features-item {
+.features .features-item+.features-item {
     margin-top: 100px;
 }
 
 @media (max-width: 640px) {
-    .features .features-item + .features-item {
+    .features .features-item+.features-item {
         margin-top: 40px;
     }
 }
@@ -909,6 +917,7 @@ a.btn.dropdown-toggle::after {
 .features .features-item p:last-child {
     margin-bottom: 0;
 }
+
 
 /*--------------------------------------------------------------
 # Pricing Section
@@ -997,6 +1006,16 @@ a.btn.dropdown-toggle::after {
     color: #fff;
 }
 
+.btn-checkout {
+    background-color: #38ada9;
+}
+
+.btn-checkout:hover {
+    background-color: #117181;
+    color: #fff;
+    transition: 0.5s;
+}
+
 .pricing .featured {
     border-top-color: var(--color-primary);
 }
@@ -1027,9 +1046,11 @@ a.btn.dropdown-toggle::after {
     }
 }
 
+
 /*--------------------------------------------------------------
 # Testimonials Section
 --------------------------------------------------------------*/
+
 .testimonials {
     padding: 80px 0;
     background: url("../images/testimonials-bg.jpg") no-repeat;
@@ -1137,6 +1158,7 @@ a.btn.dropdown-toggle::after {
     }
 }
 
+
 /*--------------------------------------------------------------
 # Frequently Asked Questions Section
 --------------------------------------------------------------*/
@@ -1196,6 +1218,7 @@ a.btn.dropdown-toggle::after {
     border-radius: 5px;
 }
 
+
 /*--------------------------------------------------------------
 # Stats Counter Section
 --------------------------------------------------------------*/
@@ -1237,11 +1260,12 @@ a.btn.dropdown-toggle::after {
     color: var(--color-secondary);
 }
 
+
 /*--------------------------------------------------------------
 # Contact Section
 --------------------------------------------------------------*/
 
-.contact .info-item + .info-item {
+.contact .info-item+.info-item {
     margin-top: 40px;
 }
 
@@ -1292,7 +1316,7 @@ a.btn.dropdown-toggle::after {
     font-weight: 600;
 }
 
-.contact .php-email-form .error-message br + br {
+.contact .php-email-form .error-message br+br {
     margin-top: 25px;
 }
 
@@ -1362,6 +1386,7 @@ a.btn.dropdown-toggle::after {
     }
 }
 
+
 /*--------------------------------------------------------------
 # Service Details Section
 --------------------------------------------------------------*/
@@ -1428,6 +1453,7 @@ a.btn.dropdown-toggle::after {
     margin-right: 8px;
     color: var(--color-primary);
 }
+
 
 /*--------------------------------------------------------------
 # Hero Section
@@ -1531,6 +1557,7 @@ a.btn.dropdown-toggle::after {
     font-size: 15px;
     font-weight: 600;
 }
+
 
 /*--------------------------------------------------------------
 # Footer
@@ -1647,6 +1674,7 @@ a.btn.dropdown-toggle::after {
 .footer .credits a {
     color: #fff;
 }
+
 
 /*--------------------------------------------------------------
 # WA
