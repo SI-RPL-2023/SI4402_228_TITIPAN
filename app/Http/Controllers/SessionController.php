@@ -18,6 +18,14 @@ class SessionController extends Controller
         ]);
     }
 
+    public function profile()
+    {
+
+        return view('/profile.index', [
+            'title' => 'Profile',
+        ]);
+    }
+
     public function login(Request $request)
     {
         Session::flash('email', $request->email);
@@ -106,5 +114,19 @@ class SessionController extends Controller
         }
 
         return 123;
+    }
+
+    public function Pembayaran()
+    {
+        return view('/pembayaran', [
+            'title' => 'Pembayaran',
+        ]);
+    }
+
+    public function DetailPembayaran()
+    {
+        return view('/detail-pembayaran', [
+            'title' => 'Detail Pembayaran',
+        ]);
     }
 }

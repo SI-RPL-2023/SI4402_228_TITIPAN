@@ -1,0 +1,58 @@
+.navbar .btn {
+	width: 42px;
+	height: 42px;
+	padding: 7px;
+}
+.text-judul {
+	font-weight: bold;
+	font-size: 24px;
+	line-height: 39px;
+	color: #141414;
+}
+.text-tautan {
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 23px;
+	color: #206E3A;
+	text-decoration: none;
+}
+.text-harga {
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 30px;
+	color: #000000;
+}
+.btn-tambah {
+	width: 42px;
+	height: 42px;
+	padding: 6px 0 0 0;
+}
+.text-judul-halaman {
+	font-weight: bold;
+	font-size: 36px;
+	line-height: 59px;
+	color: #000000;
+}
+.img-cart {
+	width: 170px;
+	height: auto;
+	border: 1px solid #EEEEEE;
+	border-radius: 12px;
+}
+.input-kuantitas {
+	width: 119px;
+}
+
+.card-title a {
+	text-decoration: none;
+	color: inherit;
+}
+.card-title a:hover {
+	color: #35BF63;
+}
+
+.text-deskripsi {
+	font-size: 14px;
+	line-height: 22px;
+	color: #697488;
+}
