@@ -68,6 +68,7 @@ Route::get('/home', function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [SessionController::class, 'profile']);
+    Route::get('/profile/edit-profile', [SessionController::class, 'editprofile']);
     Route::get('/admin', [AdminController::class, 'index']);
     Route::get('/sesi/logout', [SessionController::class, 'logout']);
     Route::get('/detail-pembayaran', [SessionController::class, 'DetailPembayaran']);
