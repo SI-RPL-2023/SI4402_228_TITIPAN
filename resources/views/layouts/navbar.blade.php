@@ -40,7 +40,7 @@
                 </a>
                 <ul class="dropdown-menu fs-6">
                     @if (Auth::check())
-                    <li><a class="dropdown-item" href="/sesi/logout" style="color: #3EABB3;">Profile</a>
+                    <li><a class="dropdown-item" href="/profile" style="color: #3EABB3;">Profile</a>
                     </li>
                     <li><a class="dropdown-item" href="/contact" style="color: #3EABB3;">Contact</a>
                     </li>

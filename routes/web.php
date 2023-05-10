@@ -67,6 +67,7 @@ Route::get('/home', function () {
 });
 
 Route::middleware(['auth'])->group(function () {
+    Route::get('/profile', [SessionController::class, 'profile']);
     Route::get('/admin', [AdminController::class, 'index']);
     Route::get('/sesi/logout', [SessionController::class, 'logout']);
 });

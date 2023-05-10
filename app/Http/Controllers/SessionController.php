@@ -18,6 +18,14 @@ class SessionController extends Controller
         ]);
     }
 
+    public function profile()
+    {
+
+        return view('/profile.index', [
+            'title' => 'Profile',
+        ]);
+    }
+
     public function login(Request $request)
     {
         Session::flash('email', $request->email);
