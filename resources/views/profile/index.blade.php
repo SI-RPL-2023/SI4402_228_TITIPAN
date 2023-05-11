@@ -8,7 +8,7 @@
 	<meta name="description" content="" />
 	<meta name="author" content="" />
 
-	<title>SB Admin 2 - Dashboard</title>
+	<title>Dashboard</title>
 
 	<!-- Custom fonts for this template-->
 	<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
@@ -90,7 +90,7 @@
 
 			<li class="nav-item">
 				<form action="">
-					<a class="nav-link" href="/profile/edit">
+					<a class="nav-link" href="/profile/edit-profile">
 						<i class="fa-solid fa-user-pen"></i>
 						<span>Edit Profile</span></a>
 				</form>
@@ -123,10 +123,6 @@
 					<button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
 						<i class="fa fa-bars"></i>
 					</button>
-
-
-
-
 					<!-- Topbar Navbar -->
 					<ul class="navbar-nav ml-auto">
 						<!-- Nav Item - Search Dropdown (Visible Only XS) -->
@@ -219,7 +215,7 @@
 						<!-- Nav Item - User Information -->
 						<li class="nav-item dropdown no-arrow">
 							<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #3EABB3;>
+								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #3EABB3;">
 								<span class=" mr-2 d-none d-lg-inline text-gray-600 small">{{ auth()->check() ?
 								auth()->user()->name : '' }}</span>
 							</a>

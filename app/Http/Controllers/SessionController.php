@@ -26,6 +26,14 @@ class SessionController extends Controller
         ]);
     }
 
+    public function editprofile()
+    {
+
+        return view('/profile.edit-profile', [
+            'title' => 'Edit Profile',
+        ]);
+    }
+
     public function login(Request $request)
     {
         Session::flash('email', $request->email);
