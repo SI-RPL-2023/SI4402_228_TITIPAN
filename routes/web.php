@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\UpdateProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -67,8 +68,16 @@ Route::get('/home', function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/profile', [SessionController::class, 'profile']);
-    Route::get('/profile/edit-profile', [SessionController::class, 'editprofile']);
+    Route::prefix('profile')->group(function () {
+        Route::get('/', [UpdateProfileController::class, 'profile']);
+        Route::get('edit-profile', [UpdateProfileController::class, 'editprofile']);
+        Route::put('update', [UpdateProfileController::class, 'updateprofile'])->name('profile.update');
+
+        Route::get('edit-password', [UpdateProfileController::class, 'EditPassword'])->name('profile.edit-password');
+        Route::put('edit-password', [UpdateProfileController::class, 'UpdatePassword']);
+
+    });
+
     Route::get('/admin', [AdminController::class, 'index']);
     Route::get('/sesi/logout', [SessionController::class, 'logout']);
     Route::get('/detail-pembayaran', [SessionController::class, 'DetailPembayaran']);
