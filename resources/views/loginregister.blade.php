@@ -80,7 +80,7 @@
                         <input type="password" placeholder="Password" name="password" />
                     </div>
                     <button type="submit" value="Login" class="btn solid" name="submit-login">Login</button>
-                    <a href="/" class="back-to-menu">
+                    <a href="/landingpage" class="back-to-menu">
                         <p style="margin-bottom: 0;">Back To Menu </p>
                     </a>
                     <p class="social-text">Or Sign in with social platforms</p>

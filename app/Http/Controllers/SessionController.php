@@ -12,7 +12,6 @@ class SessionController extends Controller
 {
     public function index()
     {
-
         return view('/loginregister', [
             'title' => 'Login & Register',
         ]);
@@ -29,26 +28,40 @@ class SessionController extends Controller
             'password.required' => 'Please enter your password.',
         ]);
 
-        $infologin = [
-            'email' => $request->email,
-            'password' => $request->password,
-        ];
+        $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($infologin)) {
-            // Kalau Otentikasi Sukses
-
-            return redirect('/')->with('success', Auth::user()->name . ' Berhasil Login');
+        if (Auth::attempt($credentials)) {
+            if (Auth::user()->role === 'admin') {
+                return redirect()->intended('/admin/dashboard')->with('success', 'Admin Login Successful');
+            } elseif (Auth::user()->role === 'customer') {
+                return redirect('/home')->with('success', Auth::user()->name . ' Berhasil Login');
+            } else {
+                return redirect()->intended('/loginregister')->withErrors('Invalid email or password entered.');
+            }
         } else {
-            // kalau otentikasi gagal
-            // return "gagal";
             return redirect('sesi')->withErrors('Invalid email or password entered.');
         }
+
+        // $infologin = [
+        //     'email' => $request->email,
+        //     'password' => $request->password,
+        // ];
+
+        // if (Auth::attempt($infologin)) {
+        //     // Kalau Otentikasi Sukses
+
+        //     return redirect('/')->with('success', Auth::user()->name . ' Berhasil Login');
+        // } else {
+        //     // kalau otentikasi gagal
+        //     // return "gagal";
+        //     return redirect('sesi')->withErrors('Invalid email or password entered.');
+        // }
     }
 
     public function logout()
     {
         Auth::logout();
-        return redirect('/')->with('success', 'Succesfully Logout You Account');
+        return redirect('/landingpage')->with('success', 'Succesfully Logout You Account');
     }
 
     public function register()
@@ -98,7 +111,7 @@ class SessionController extends Controller
 
         if (Auth::attempt($infologin)) {
             // Kalau Otentikasi Sukses
-            return redirect('/')->with('success', Auth::user()->name . ' Berhasil Login');
+            return redirect('/home')->with('success', Auth::user()->name . ' Berhasil Login');
         } else {
             // kalau otentikasi gagal
             // return "gagal";

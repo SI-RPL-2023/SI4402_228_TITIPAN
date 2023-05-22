@@ -60,7 +60,7 @@
 
 			<!-- Nav Item - Home-->
 			<li class="nav-item">
-				<a class="nav-link" href="/">
+				<a class="nav-link" href="/home">
 					<i class="fa-solid fa-house"></i>
 					<span>Home</span>
 				</a>

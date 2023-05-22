@@ -99,157 +99,7 @@
 <!-- End Hero Section -->
 
 <main id="main">
-    @if (Auth::check())
-    <!-- ======= Services Section ======= -->
-    <section id="service" class="services pt-0">
-        <div class="container" data-aos="fade-up">
 
-            <div class="section-header">
-                <h2>Layanan Kami</h2>
-
-            </div>
-
-            <div class="row gy-4">
-
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card">
-                        <div class="card-img">
-                            <img src="{{ asset('images/pindahan-rumah.jpg') }}" alt="" class="img-fluid">
-                        </div>
-                        <h3><a href="jasapindahan" class="stretched-link">Jasa Pindahan</a></h3>
-                        <p>Kami menyediakan jasa untuk membantu Anda pindah rumah. Jasa pindahan rumah ini merupakan
-                            kumpulan profesional yang akan menjaga peralatan dan perabotan Anda aman selama proses
-                            pemindahan.</p>
-                    </div>
-                </div>
-                <!-- End Card Item -->
-
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card">
-                        <div class="card-img">
-                            <img src="{{ asset('images/logistics-service.jpg') }}" alt="" class="img-fluid">
-                        </div>
-                        <h3><a href="jasapengiriman" class="stretched-link">Jasa Pengiriman</a></h3>
-                        <p>Jasa pengiriman barang merupakan salah satu layanan yang kami
-                            tawarkan. Kemudahan dalam proses mengirim suatu barang dari satu kota ke kota
-                            lainnya dengan aman dan dapat dipertanggung jawabkan oleh kami.
-                            Pengiriman barang dapat berupa dokumen, logistik, produk elektronik dan lainlain.</p>
-                    </div>
-                </div>
-                <!-- End Card Item -->
-
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card">
-                        <div class="card-img">
-                            <img src="{{ asset('images/cargo-service.jpg') }}" alt="" class="img-fluid">
-                        </div>
-                        <h3><a href="jasapenyimpanan" class="stretched-link">Jasa Penyimpanan</a></h3>
-                        <p>Kami juga menyediakan jasa penyimpanan atau penitipan barang bagi kamu yang bingung atau
-                            merasa kurang aman jika barang kamu dtinggalkan, cukup hubungi kami, kami akan membantu
-                            anda.</p>
-                    </div>
-                </div>
-                <!-- End Card Item -->
-
-            </div>
-
-        </div>
-    </section>
-    <!-- End Services Section -->
-
-    <!-- ======= Call To Action Section ======= -->
-    <section id="call-to-action" class="call-to-action">
-        <div class="container" data-aos="zoom-out">
-
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <h1>Mau Cek Estimasi Harga?</h1>
-                    <p>Pastikan Anda sudah konsultasi dengan spesialis jasa pindahan kami, untuk membantu dan memberikan
-                        solusi kebutuhan pindahan Anda..</p>
-                    <a class="cta-btn"
-                        href="https://api.whatsapp.com/send/?phone=628112199706&text=Halo admin Titipan, Saya ingin bertanya tentang:&type=phone_number&app_absent=0"
-                        target="_blank">Konsultasi Gratis</a>
-                </div>
-            </div>
-
-        </div>
-    </section>
-    <!-- End Call To Action Section -->
-
-    <!-- ======= Pricing Section ======= -->
-    <section id="pricing" class="pricing pt-0">
-        <div class="container" data-aos="fade-up">
-            <div class="section-header">
-                <h2>Paket Layanan</h2>
-            </div>
-
-            <div class="row gy-4">
-
-                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="pricing-item">
-                        <a href="/basicplan">
-                            <h2>Basic Plan</h2>
-                        </a>
-                        <ul>
-                            <li><i class="bi bi-check"></i>Gratis asuransi</li>
-                            <li><i class="bi bi-check"></i>Gratis survey</li>
-                            <li><i class="bi bi-check"></i>Armada Berkualitas</li>
-                            <li class="na"><i class="bi bi-x"></i> <span>Material</span></li>
-                            <li class="na"><i class="bi bi-x"></i> <span>Manpower</span></li>
-                            <li class="na"><i class="bi bi-x"></i> <span>Packing</span></li>
-                            <li class="na"><i class="bi bi-x"></i> <span>Unpacking</span></li>
-                            <li class="na"><i class="bi bi-x"></i> <span>Reposisi</span></li>
-                        </ul>
-                        <a href="https://api.whatsapp.com/send/?phone=628112199706&text=Halo admin Titipan, Saya ingin bertanya tentang:&type=phone_number&app_absent=0"
-                            class="buy-btn" target="_blank">Hubungi Spesialis</a>
-                    </div>
-                </div><!-- End Pricing Item -->
-
-                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="pricing-item featured">
-                        <a href="/premiumplan">
-                            <h2>Premium Plan</h2>
-                        </a>
-                        <ul>
-                            <li><i class="bi bi-check"></i>Gratis asuransi</li>
-                            <li><i class="bi bi-check"></i>Gratis survey</li>
-                            <li><i class="bi bi-check"></i>Armada Berkualitas</li>
-                            <li><i class="bi bi-check"></i>Manpower</li>
-                            <li><i class="bi bi-check"></i>Material</li>
-                            <li><i class="bi bi-check"></i>Packing</li>
-                            <li class="na"><i class="bi bi-x"></i> <span>Unpacking</span></li>
-                            <li class="na"><i class="bi bi-x"></i> <span>Reposisi</span></li>
-                        </ul>
-                        <a href="https://api.whatsapp.com/send/?phone=628112199706&text=Halo admin Titipan, Saya ingin bertanya tentang:&type=phone_number&app_absent=0"
-                            class="buy-btn" target="_blank">Hubungi Spesialis</a>
-                    </div>
-                </div><!-- End Pricing Item -->
-
-                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="pricing-item">
-                        <a href="/advanceplan">
-                            <h2>Advance Plan</h2>
-                        </a>
-                        <ul>
-                            <li><i class="bi bi-check"></i>Gratis asuransi</li>
-                            <li><i class="bi bi-check"></i>Gratis survey</li>
-                            <li><i class="bi bi-check"></i>Armada Berkualitas</li>
-                            <li><i class="bi bi-check"></i>Manpower</li>
-                            <li><i class="bi bi-check"></i>Material</li>
-                            <li><i class="bi bi-check"></i>Packing</li>
-                            <li><i class="bi bi-check"></i>Unpacking</li>
-                            <li><i class="bi bi-check"></i>Reposisi</li>
-                        </ul>
-                        <a href="https://api.whatsapp.com/send/?phone=628112199706&text=Halo admin Titipan, Saya ingin bertanya tentang:&type=phone_number&app_absent=0"
-                            class="buy-btn" target="_blank">Hubungi Spesialis</a>
-                    </div>
-                </div><!-- End Pricing Item -->
-
-            </div>
-
-        </div>
-    </section><!-- End Pricing Section -->
-    @else
     <!-- ======= Featured Services Section ======= -->
     <section id="featured-services" class="featured-services">
         <div class="container">
@@ -264,7 +114,7 @@
                             Kami menyediakan jasa untuk membantu Anda pindah rumah. Jasa pindahan rumah ini merupakan
                             kumpulan profesional yang akan menjaga peralatan dan perabotan Anda aman selama proses
                             pemindahan.</p>
-                        <a href="pindahan.html" class="readmore stretched-link"><span>Pelajari Selengkapnya</span><i
+                        <a href="jasapindahan" class="readmore stretched-link"><span>Pelajari Selengkapnya</span><i
                                 class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
@@ -278,7 +128,7 @@
                             Jasa pengiriman barang merupakan salah satu layanan yang kami tawarkan. Kemudahan dalam
                             proses mengirim suatu barang dari satu kota ke kota lainnya dengan aman dan dapat
                             dipertanggung jawabkan oleh kami.</p>
-                        <a href="pengiriman.html" class="readmore stretched-link"><span>Pelajari Selengkapnya</span><i
+                        <a href="jasapengiriman" class="readmore stretched-link"><span>Pelajari Selengkapnya</span><i
                                 class="bi bi-arrow-right"></i></a>
                     </div>
                 </div><!-- End Service Item -->
@@ -291,7 +141,7 @@
                             Kami juga menyediakan jasa penyimpanan atau penitipan barang bagi kamu yang bingung atau
                             merasa kurang aman jika barang kamu dtinggalkan, cukup hubungi kami, kami akan membantu
                             anda.</p>
-                        <a href="penyimpanan.html" class="readmore stretched-link"><span>Pelajari Selengkapnya</span><i
+                        <a href="jasapenyimpanan" class="readmore stretched-link"><span>Pelajari Selengkapnya</span><i
                                 class="bi bi-arrow-right"></i></a>
                     </div>
                 </div><!-- End Service Item -->
@@ -499,7 +349,7 @@
                         <div class="card-img">
                             <img src="{{ asset('images/pindahan-rumah.jpg') }}" alt="" class="img-fluid">
                         </div>
-                        <h3><a href="pindahan.html" class="stretched-link">Jasa Pindahan</a></h3>
+                        <h3><a href="jasapindahan" class="stretched-link">Jasa Pindahan</a></h3>
                         <p>Kami menyediakan jasa untuk membantu Anda pindah rumah. Jasa pindahan rumah ini merupakan
                             kumpulan profesional yang akan menjaga peralatan dan perabotan Anda aman selama proses
                             pemindahan.</p>
@@ -512,7 +362,7 @@
                         <div class="card-img">
                             <img src="{{ asset('images/logistics-service.jpg') }}" alt="" class="img-fluid">
                         </div>
-                        <h3><a href="pengiriman.html" class="stretched-link">Jasa Pengiriman</a></h3>
+                        <h3><a href="jasapengiriman" class="stretched-link">Jasa Pengiriman</a></h3>
                         <p>Jasa pengiriman barang merupakan salah satu layanan yang kami
                             tawarkan. Kemudahan dalam proses mengirim suatu barang dari satu kota ke kota
                             lainnya dengan aman dan dapat dipertanggung jawabkan oleh kami.
@@ -526,7 +376,7 @@
                         <div class="card-img">
                             <img src="{{ asset('images/cargo-service.jpg') }}" alt="" class="img-fluid">
                         </div>
-                        <h3><a href="penyimpanan.html" class="stretched-link">Jasa Penyimpanan</a></h3>
+                        <h3><a href="jasapenyimpanan" class="stretched-link">Jasa Penyimpanan</a></h3>
                         <p>Kami juga menyediakan jasa penyimpanan atau penitipan barang bagi kamu yang bingung atau
                             merasa kurang aman jika barang kamu dtinggalkan, cukup hubungi kami, kami akan membantu
                             anda.</p>
@@ -750,7 +600,7 @@
 
         </div>
     </section><!-- End Frequently Asked Questions Section -->
-    @endif
+
 
 </main>
 <!-- End #main -->

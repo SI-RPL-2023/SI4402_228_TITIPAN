@@ -8,7 +8,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>{{ $title }} | Titipan - Jasa Pindahan & Pengiriman Terbaik</title>
+    <title>| Titipan - Jasa Pindahan & Pengiriman Terbaik</title>
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
     <link
@@ -46,10 +46,10 @@
             <hr class="sidebar-divider my-0" />
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item {{ $title === 'Profile' ? 'active' : '' }}">
+            <li class="nav-item ">
                 <a class="nav-link" href="/profile">
                     <i class="fa-solid fa-user"></i>
-                    <span>Profile</span></a>
+                    <span>Profile Admin</span></a>
             </li>
 
             <!-- Divider -->
@@ -60,16 +60,16 @@
 
             <!-- Nav Item - Home-->
             <li class="nav-item">
-                <a class="nav-link" href="/home">
+                <a class="nav-link" href="/">
                     <i class="fa-solid fa-house"></i>
-                    <span>Home</span>
+                    <span>Table Pelanggan</span>
                 </a>
 
                 <!-- Nav Item - Jasa Pindahan -->
             <li class="nav-item">
                 <a class="nav-link" href="../jasapindahan">
                     <i class="fa-solid fa-truck-ramp-box"></i>
-                    <span>Jasa Pindahan</span>
+                    <span>Table Transaksi</span>
                 </a>
             </li>
 
@@ -77,22 +77,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="../jasapenyimpanan">
                     <i class="fa-solid fa-truck-arrow-right"></i>
-                    <span>Jasa Penyimpanan</span></a>
-            </li>
-
-            <!-- Nav Jasa Pengiriman -->
-            <li class="nav-item">
-                <a class="nav-link" href="../jasapengiriman">
-                    <i class="fa-solid fa-truck-plane"></i>
-                    <span>Jasa Pengiriman</span></a>
-            </li>
-
-            <li class="nav-item {{ $title === 'Edit Profile' ? 'active' : '' }}">
-                <form action="">
-                    <a class="nav-link" href="/profile/edit-profile">
-                        <i class="fa-solid fa-user-pen"></i>
-                        <span>Edit Profile</span></a>
-                </form>
+                    <span>Tambah Jasa Layanan</span></a>
             </li>
 
             <li class="nav-item">
@@ -224,97 +209,58 @@
                 </nav>
                 <!-- End of Topbar -->
 
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Change Your Password</h1>
-                        <a href="{{ route('profile.edit-password') }}"><button class="btn btn-primary">Ubah
-                                Password</button></a>
+                @yield('container')
+                @if ($message = Session::get('success'))
+                <div class="col-md-4">
+                    <div class="alert alert-success alert-dismissible fade show" onclick="closeAlert()" role="alert">
+                        <strong>{{ $message }}</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
-                    <div class="container">
-                        @if(session()->has('success'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <strong>{{ session('success') }}</strong>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                        @endif
-                        <form action="{{ route('profile.edit-password') }}" method="POST">
-                            @method("put")
-                            @csrf
-                            <div class="form-group">
-                                <label for="current_password">Current Password:</label>
-                                <input type="password" class="form-control" id="current_password"
-                                    name="current_password" placeholder="Masukan Password Lama">
-                                @error('current_password')
-                                <div class="text-danger mt-2 text-sm"> {{ $message }}</div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label for="password">New Password:</label>
-                                <input type="password" class="form-control" id="password" name="password"
-                                    placeholder="Masukan Password Baru">
-                                @error('password')
-                                <div class="text-danger mt-2 text-sm"> {{ $message }}</div>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label for="password_confirmation">Confirm Password::</label>
-                                <input class="form-control" id="password_confirmation" name="password_confirmation"
-                                    placeholder="Konfirmasi Password" value="" type="password"></input>
-                                @error('password_confirmation')
-                                <div class="text-danger mt-2 text-sm"> {{ $message }}</div>
-                                @enderror
-                            </div>
-                            <br>
-                            <button type="submit" class="btn" style="background-color: #079992; color:#fff">Simpan
-                                Perubahan</button>
-                        </form>
-                    </div>
-
-                    <!-- Footer -->
-                    <footer class="sticky-footer bg-white" style="margin-top: 500px;">
-                        <div class="container my-auto">
-                            <div class="copyright text-center my-auto">
-                                <span>Copyright &copy; Your Website 2021</span>
-                            </div>
-                        </div>
-                    </footer>
-                    <!-- End of Footer -->
                 </div>
-                <!-- End of Content Wrapper -->
+                @endif
+
+
+                <!-- Footer -->
+                <footer class="sticky-footer bg-white" style="margin-top: 500px;">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Copyright &copy; Your Website 2021</span>
+                        </div>
+                    </div>
+                </footer>
+                <!-- End of Footer -->
             </div>
-            <!-- End of Page Wrapper -->
+            <!-- End of Content Wrapper -->
+        </div>
+        <!-- End of Page Wrapper -->
 
-            <!-- Scroll to Top Button-->
-            <a class="scroll-to-top rounded" href="#page-top">
-                <i class="fas fa-angle-up"></i>
-            </a>
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
 
-            <script src="https://kit.fontawesome.com/198689d7a2.js" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/198689d7a2.js" crossorigin="anonymous"></script>
 
-            <!-- Bootstrap core JavaScript-->
-            <script src="../vendor/jquery/jquery.min.js"></script>
-            <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Bootstrap core JavaScript-->
+        <script src="../vendor/jquery/jquery.min.js"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-            <!-- Core plugin JavaScript-->
-            <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+        <!-- Core plugin JavaScript-->
+        <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 
-            <!-- Custom scripts for all pages-->
-            <script src="../js/sb-admin-2.min.js"></script>
+        <!-- Custom scripts for all pages-->
+        <script src="../js/sb-admin-2.min.js"></script>
 
-            <!-- Page level plugins -->
-            <script src="../vendor/chart.js/Chart.min.js"></script>
+        <!-- Page level plugins -->
+        <script src="../vendor/chart.js/Chart.min.js"></script>
 
-            <!-- Page level custom scripts -->
-            <script src="../js/demo/chart-area-demo.js"></script>
-            <script src="../js/demo/chart-pie-demo.js"></script>
+        <!-- Page level custom scripts -->
+        <script src="../js/demo/chart-area-demo.js"></script>
+        <script src="../js/demo/chart-pie-demo.js"></script>
 
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-                crossorigin="anonymous">
-            </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous">
+        </script>
 </body>
 
 </html>
