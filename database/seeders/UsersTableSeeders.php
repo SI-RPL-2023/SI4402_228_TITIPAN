@@ -19,7 +19,7 @@ class UsersTableSeeders extends Seeder
             'address' => 'gunung soputan',
             'date_birth' => '2001-04-13',
             'phone_number' => '082144723035',
-            'role' => 'customer',
+            'role' => 'admin',
             'password' => Hash::make('123456'),
         ]);
 

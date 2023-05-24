@@ -8,8 +8,7 @@
 	<meta name="description" content="" />
 	<meta name="author" content="" />
 
-	<title>Dashboard</title>
-
+	<title>{{ $title }} | Titipan - Jasa Pindahan & Pengiriman Terbaik</title>
 	<!-- Custom fonts for this template-->
 	<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
 	<link
@@ -47,8 +46,8 @@
 			<hr class="sidebar-divider my-0" />
 
 			<!-- Nav Item - Dashboard -->
-			<li class="nav-item active">
-				<a class="nav-link" href="index.html">
+			<li class="nav-item {{ $title === 'Profile' ? 'active' : '' }}">
+				<a class=" nav-link" href="/profile">
 					<i class="fa-solid fa-user"></i>
 					<span>Profile</span></a>
 			</li>
@@ -61,7 +60,7 @@
 
 			<!-- Nav Item - Home-->
 			<li class="nav-item">
-				<a class="nav-link" href="/">
+				<a class="nav-link" href="/home">
 					<i class="fa-solid fa-house"></i>
 					<span>Home</span>
 				</a>
@@ -88,7 +87,7 @@
 					<span>Jasa Pengiriman</span></a>
 			</li>
 
-			<li class="nav-item">
+			<li class="nav-item {{ $title === 'Edit Profile' ? 'active' : '' }}">
 				<form action="">
 					<a class="nav-link" href="/profile/edit-profile">
 						<i class="fa-solid fa-user-pen"></i>
@@ -215,9 +214,10 @@
 						<!-- Nav Item - User Information -->
 						<li class="nav-item dropdown no-arrow">
 							<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #3EABB3;">
+								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+								style="color: #3EABB3;">
 								<span class=" mr-2 d-none d-lg-inline text-gray-600 small">{{ auth()->check() ?
-								auth()->user()->name : '' }}</span>
+									auth()->user()->name : '' }}</span>
 							</a>
 						</li>
 					</ul>

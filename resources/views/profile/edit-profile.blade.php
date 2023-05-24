@@ -8,8 +8,7 @@
 	<meta name="description" content="" />
 	<meta name="author" content="" />
 
-	<title>Dashboard</title>
-
+	<title>{{ $title }} | Titipan - Jasa Pindahan & Pengiriman Terbaik</title>
 	<!-- Custom fonts for this template-->
 	<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
 	<link
@@ -34,7 +33,7 @@
 
 		<ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #3eabb3">
 			<!-- Sidebar - Brand -->
-			<a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+			<a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
 				<div class="sidebar-brand-icon">
 					<h3><img src="../images/titipanfix.png" alt="" height="80px" width="80px" style="float: left">
 					</h3>
@@ -47,8 +46,8 @@
 			<hr class="sidebar-divider my-0" />
 
 			<!-- Nav Item - Dashboard -->
-			<li class="nav-item active">
-				<a class="nav-link" href="index.html">
+			<li class="nav-item {{ $title === 'Profile' ? 'active' : '' }}">
+				<a class="nav-link" href="/profile">
 					<i class="fa-solid fa-user"></i>
 					<span>Profile</span></a>
 			</li>
@@ -61,14 +60,14 @@
 
 			<!-- Nav Item - Home-->
 			<li class="nav-item">
-				<a class="nav-link" href="/">
+				<a class="nav-link" href="/home">
 					<i class="fa-solid fa-house"></i>
 					<span>Home</span>
 				</a>
 
 				<!-- Nav Item - Jasa Pindahan -->
 			<li class="nav-item">
-				<a class="nav-link" href="/jasapindahan">
+				<a class="nav-link" href="../jasapindahan">
 					<i class="fa-solid fa-truck-ramp-box"></i>
 					<span>Jasa Pindahan</span>
 				</a>
@@ -76,19 +75,19 @@
 
 			<!-- Nav Penyimpanan -->
 			<li class="nav-item">
-				<a class="nav-link" href="/jasapenyimpanan">
+				<a class="nav-link" href="../jasapenyimpanan">
 					<i class="fa-solid fa-truck-arrow-right"></i>
 					<span>Jasa Penyimpanan</span></a>
 			</li>
 
 			<!-- Nav Jasa Pengiriman -->
 			<li class="nav-item">
-				<a class="nav-link" href="jasapengiriman">
+				<a class="nav-link" href="../jasapengiriman">
 					<i class="fa-solid fa-truck-plane"></i>
 					<span>Jasa Pengiriman</span></a>
 			</li>
 
-			<li class="nav-item">
+			<li class="nav-item {{ $title === 'Edit Profile' ? 'active' : '' }}">
 				<form action="">
 					<a class="nav-link" href="/profile/edit-profile">
 						<i class="fa-solid fa-user-pen"></i>
@@ -215,9 +214,10 @@
 						<!-- Nav Item - User Information -->
 						<li class="nav-item dropdown no-arrow">
 							<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #3EABB3;">
+								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+								style="color: #3EABB3;">
 								<span class=" mr-2 d-none d-lg-inline text-gray-600 small">{{ auth()->check() ?
-								auth()->user()->name : '' }}</span>
+									auth()->user()->name : '' }}</span>
 							</a>
 						</li>
 					</ul>
@@ -229,36 +229,57 @@
 					<!-- Page Heading -->
 					<div class="d-sm-flex align-items-center justify-content-between mb-4">
 						<h1 class="h3 mb-0 text-gray-800">Edit Profile</h1>
+						<a href="{{ route('profile.edit-password') }}"><button class="btn btn-primary">Ubah
+								Password</button></a>
 					</div>
 					<div class="container">
-						<form>
-						<div class="form-group">
-							<label for="name">Name:</label>
-							<input type="text" class="form-control" id="name" placeholder="Enter your name" value="{{ auth()->check() ?
-									auth()->user()->name : '' }}">
+						@if(session()->has('success'))
+						<div class="alert alert-success alert-dismissible fade show" role="alert">
+							<strong>{{ session('success') }}</strong>
+							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 						</div>
-						<div class="form-group">
-							<label for="email">Email:</label>
-							<input type="email" class="form-control" id="email" placeholder="Enter your email" value="{{ auth()->check() ?
-									auth()->user()->email : '' }}">
-						</div>
-						<div class="form-group">
-							<label for="password">Password:</label>
-							<input type="password" class="form-control" id="password" placeholder="Enter your password" value="{{ auth()->check() ?
-									auth()->user()->password : '' }}">
-						</div>
-						<div class="form-group">
-							<label for="address">Address:</label>
-							<textarea class="form-control" id="address" placeholder="Enter your address" value="{{ auth()->check() ?
-									auth()->user()->address : '' }}"></textarea>
-						</div>
-						<div class="form-group">
-							<label for="phone">Phone Number:</label>
-							<input type="text" class="form-control" id="phone" placeholder="Enter your phone number" value="{{ auth()->check() ?
-									auth()->user()->phone_number : '' }}">
-						</div>
-						<br>
-						<button type="submit" class="btn" style="background-color: #079992; color:#fff" >Simpan Perubahan</button>
+						@endif
+						<form action="{{ route('profile.update') }}" method="POST">
+							@method("put")
+							@csrf
+							<div class="form-group">
+								<label for="name">Name:</label>
+								<input type="text" class="form-control" id="name" name="name" placeholder="Masukan Nama"
+									value="{{ old('name', Auth::user()->name) }}">
+								@error('name')
+								<div class="text-danger mt-2 text-sm"> {{ $message }}</div>
+								@enderror
+							</div>
+							<div class="form-group">
+								<label for="email">Email:</label>
+								<input type="email" class="form-control" id="email" name="email"
+									placeholder="Masukan Email" value="{{ old('email', Auth::user()->email) }}">
+								@error('email')
+								<div class="text-danger mt-2 text-sm"> {{ $message }}</div>
+								@enderror
+							</div>
+
+							<div class="form-group">
+								<label for="address">Address:</label>
+								<textarea class="form-control" id="address" name="address"
+									placeholder="Masukan Tempat Tinggal"
+									value="">{{ old('address', Auth::user()->address) }}</textarea>
+								@error('address')
+								<div class="text-danger mt-2 text-sm"> {{ $message }}</div>
+								@enderror
+							</div>
+							<div class="form-group">
+								<label for="phone">Phone Number:</label>
+								<input type="number" class="form-control" id="phone" name="phone_number"
+									placeholder="Masukan No Handphone"
+									value="{{ old('phone_number', Auth::user()->phone_number) }}">
+								@error('phone_number')
+								<div class="text-danger mt-2 text-sm"> {{ $message }}</div>
+								@enderror
+							</div>
+							<br>
+							<button type="submit" class="btn" style="background-color: #079992; color:#fff">Simpan
+								Perubahan</button>
 						</form>
 					</div>
 
@@ -280,33 +301,6 @@
 			<a class="scroll-to-top rounded" href="#page-top">
 				<i class="fas fa-angle-up"></i>
 			</a>
-
-			<!-- Logout Modal-->
-			<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-				aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLabel">
-								Ready to Leave?
-							</h5>
-							<button class="close" type="button" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">×</span>
-							</button>
-						</div>
-						<div class="modal-body">
-							Select "Logout" below if you are ready to end your
-							current session.
-						</div>
-						<div class="modal-footer">
-							<button class="btn btn-secondary" type="button" data-dismiss="modal">
-								Cancel
-							</button>
-							<a class="btn btn-primary" href="login.html">Logout</a>
-						</div>
-					</div>
-				</div>
-			</div>
 
 			<script src="https://kit.fontawesome.com/198689d7a2.js" crossorigin="anonymous"></script>
 

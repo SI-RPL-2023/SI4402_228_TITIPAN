@@ -3,7 +3,10 @@ const sign_up_btn = document.querySelector("#sign-up-btn");
 const container = document.querySelector(".container");
 const menuToggle = document.querySelector(".menu-toggle input");
 const nav = document.querySelector("nav ul");
-
+console.log(window.location.pathname);
+if (window.location.pathname == "/sesi/register") {
+    container.classList.add("sign-up-mode");
+}
 sign_up_btn.addEventListener("click", () => {
     container.classList.add("sign-up-mode");
 });
