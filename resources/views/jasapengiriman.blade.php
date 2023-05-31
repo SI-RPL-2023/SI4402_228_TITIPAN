@@ -109,9 +109,20 @@
 
                 <script>
                     function showLoginAlert() {
-                    if (confirm('Anda Belum Login, Login terlebih dahulu')) {
-                        window.location.href = "/sesi";
+                        Swal.fire({
+                        title: 'You need to Login First!',
+                        text: "You won't be able to revert this!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Login'
+                        }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = "/sesi";
                         }
+                        })
+                    
                     }
                 </script>
                 @else

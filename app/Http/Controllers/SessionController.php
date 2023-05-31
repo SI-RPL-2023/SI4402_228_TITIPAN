@@ -32,7 +32,7 @@ class SessionController extends Controller
 
         if (Auth::attempt($credentials)) {
             if (Auth::user()->role === 'admin') {
-                return redirect()->intended('/admin/dashboard')->with('success', 'Admin Login Successful');
+                return redirect()->intended('/admin/dashboard')->with('success', 'Selamat Datang Kembali Admin ' . Auth::user()->name);
             } elseif (Auth::user()->role === 'customer') {
                 return redirect('/home')->with('success', Auth::user()->name . ' Berhasil Login');
             } else {
@@ -61,7 +61,7 @@ class SessionController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect('/landingpage')->with('success', 'Succesfully Logout You Account');
+        return redirect('/')->with('success', 'Succesfully Logout You Account');
     }
 
     public function register()

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SesiControllerAdmin;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\UpdateProfileController;
 use Illuminate\Support\Facades\Route;
@@ -26,8 +27,22 @@ Route::middleware(['guest'])->group(function () {
 
 // ADMIN
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
-    Route::get('/dashboard', [AdminController::class, 'index']);
+    Route::get('/dashboard', [SesiControllerAdmin::class, 'index'])->name('admin.dashboard');
+
+    // table customer
+    Route::get('/TableCustomer', [AdminController::class, 'TableCustomer'])->name('admin.table.customer');
+    Route::get('/TableCustomer/TambahCustomer', [SesiControllerAdmin::class, 'TambahCustomer'])->name('tambah-customer.customer');
+    Route::match (['get', 'post'], '/TambahCustomer/Create', [SesiControllerAdmin::class, 'create'])->name('admin.create.user');
+    Route::delete('/TableCustomer/{id}', [SesiControllerAdmin::class, 'destroy'])->name('customers.destroy');
+
+    // Edit User
+    Route::get('TableCustomer/EditCustomer/{id}', [SesiControllerAdmin::class, 'EditUser'])->name('admin.edit-user');
+    Route::put('/TableCustomer/EditCustomer/{id}', [SesiControllerAdmin::class, 'update'])->name('admin.proses.edit-user');
+    Route::get('TableCustomer/EditCustomer/EditPassword/{id}', [SesiControllerAdmin::class, 'EditPassword'])->name('admin.edit-password.user');
+    Route::put('TableCustomer/EditCustomer/EditPassword/{id}', [SesiControllerAdmin::class, 'updatePassword'])->name('admin.proses.edit-password');
+
     Route::get('/sesi/logout', [SessionController::class, 'logout']);
+
 });
 // END ADMIN
 
@@ -58,7 +73,7 @@ Route::middleware(['auth'])->group(function () {
 });
 // END CUSTOMER
 
-Route::get('/landingpage', function () {
+Route::get('/', function () {
     if (auth()->user() == null) {
         return view('landingpage', [
             "title" => "Landing Page",
@@ -66,7 +81,6 @@ Route::get('/landingpage', function () {
         ]);
     } elseif (auth()->user()->role == 'customer') {
         return redirect('/home');
-
     } else {
         return redirect('/admin/dashboard');
     }
