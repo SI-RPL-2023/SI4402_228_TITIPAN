@@ -51,57 +51,36 @@
         <div class="row">
             <div class="col-12">
                 <div class="table-responsive">
-                    <table class="table">
-                        <tr>
-                            <th>Nama Layanan</th>
-                            <th>Jenis Layanan</th>
-                            <th></th>
-                            <th>Keterangan</th>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                Paket Pindahan<br>
-                            </td>
-                            <td>Basic</td>
-                            <td></td>
-                            <td>1 - 150kg</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Paket Pindahan<br>
-                            </td>
-                            <td>Premium</td>
-                            <td></td>
-                            <td>1 - 150kg</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Paket Pindahan<br>
-                            </td>
-                            <td>Advance</td>
-                            <td></td>
-                            <td>1 - 150kg</td>
-                        </tr>
-
+                @csrf
+                @method('POST')
+                <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Nama Layanan</th>
+                                
+                                <th>Jenis Layanan</th>
+                                <th>Harga</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($layanan as $item)
+                                <tr>
+                                    <td>{{ $item->nama_layanan }}</td>
+                                    <td>{{ $item->jenis_layanan }}</td>
+                                    <td>Rp {{ number_format($item->harga, 0, ',', '.') }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
                     </table>
                 </div>
+                
             </div>
         </div>
-
+        <br>
         <div class="row">
-            <div class="col-md-5 ms-auto">
-                <div class="table-responsive">
+            <div class=" text-center">
+                <div class="col-md-6">
                     <table class="table">
-                        <tr>
-                            <th>Biaya Layanan</th>
-                            <td>IDR -</td>
-                        </tr>
-                        <tr>
-                            <th>Total</th>
-                            <td>IDR 2.000.000</td>
-                        </tr>
-                        <tr>
                             <td colspan="2">
                                 <form action="">
                                     <a href="pembayaran" class="btn btn-lg btn-success w-100">Selesaikan
@@ -114,17 +93,6 @@
 
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
 
 
 

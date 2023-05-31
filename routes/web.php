@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\LayananController;
 use App\Http\Controllers\SesiControllerAdmin;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\UpdateProfileController;
@@ -66,6 +67,9 @@ Route::middleware(['auth'])->group(function () {
         });
     });
 
+    Route::get('/detail-pembayaran-pindahan',[LayananController::class,'showpindahan']);
+    Route::get('/detail-pembayaran-penyimpanan',[LayananController::class,'showpenyimpanan']);
+    Route::get('/detail-pembayaran-pengiriman',[LayananController::class,'showpengiriman']);
     Route::get('/sesi/logout', [SessionController::class, 'logout']);
     Route::get('/detail-pembayaran', [SessionController::class, 'DetailPembayaran']);
     Route::get('/pembayaran', [SessionController::class, 'pembayaran']);

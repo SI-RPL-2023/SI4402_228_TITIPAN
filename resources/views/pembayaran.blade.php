@@ -71,55 +71,55 @@
 
 					<label class="w-100 mb-3">
 						Nama lengkap <br>
-						<input type="text" class="form-control">
+						<input type="text" name="nama" required placeholder="Nama Lengkap" class="form-control">
 					</label>
 					<label class="w-100 mb-3">
 						Alamat lengkap <br>
-						<input type="text" class="form-control">
+						<input type="text" name="alamat" required placeholder="Jl.A, No 11" class="form-control">
 					</label>
 					<label class="w-100 mb-3">
 						Provinsi <br>
-						<input type="text" class="form-control">
+						<input type="text" name="prov" required placeholder="Jawa barat" class="form-control">
 					</label>
 					<label class="w-100 mb-3">
 						Kabupaten / Kota <br>
-						<input type="text" class="form-control">
+						<input type="text" name="kab" required placeholder="Bandung" class="form-control">
 					</label>
 					<label class="w-100 mb-3">
 						Kode POS <br>
-						<input type="number" class="form-control">
+						<input type="number" name="kode" required placeholder="234123" class="form-control">
 					</label>
 
 					<h3 class="text-judul mt-5">Jenis Layanan</h3>
 					<label class="w-100 mb-3 border rounded p-2">
-						<input type="radio" name="kurir">
+						<input type="radio" name="basic">
 						<span>Basic</span>
 					</label>
 					<label class="w-100 mb-3 border rounded p-2">
-						<input type="radio" name="kurir">
+						<input type="radio" name="pre">
 						<span>Premium</span>
 					</label>
 					<label class="w-100 mb-3 border rounded p-2">
-						<input type="radio" name="kurir">
+						<input type="radio" name="adv">
 						<span>Advance</span>
 					</label>
 
 
 					<h3 class="text-judul mt-5">Metode Pembayaran</h3>
 					<label class="w-100 mb-3 border rounded p-2">
-						<input type="radio" name="pembayaran">
+						<input type="radio" name="tf">
 						Transfer Bank
 					</label>
 					<label class="w-100 mb-3 border rounded p-2">
-						<input type="radio" name="pembayaran">
+						<input type="radio" name="gopay">
 						<img src="images/bayar-1.png">
 					</label>
 					<label class="w-100 mb-3 border rounded p-2">
-						<input type="radio" name="pembayaran">
+						<input type="radio" name="dana">
 						<img src="images/bayar-2.png">
 					</label>
 					<label class="w-100 mb-3 border rounded p-2">
-						<input type="radio" name="pembayaran">
+						<input type="radio" name="ovo">
 						<img src="images/bayar-3.png">
 					</label>
 
