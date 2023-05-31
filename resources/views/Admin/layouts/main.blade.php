@@ -8,9 +8,9 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>| Titipan - Jasa Pindahan & Pengiriman Terbaik</title>
+    <title> {{ $title }}| Titipan - Jasa Pindahan & Pengiriman Terbaik</title>
     <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet" />
@@ -22,8 +22,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
+    {{-- SWEET ALERT CSS --}}
+    <link rel="stylesheet" type="text/css" href="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.css">
+
     <!-- Custom styles for this template-->
-    <link href="../css/sb-admin-2.min.css" rel="stylesheet" />
+    <link href="../../../../css/sb-admin-2.min.css" rel="stylesheet" />
 </head>
 
 <body id="page-top">
@@ -35,7 +38,8 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
                 <div class="sidebar-brand-icon">
-                    <h3><img src="../images/titipanfix.png" alt="" height="80px" width="80px" style="float: left">
+                    <h3><img src="../../../../images/titipanfix.png" alt="" height="80px" width="80px"
+                            style="float: left">
                     </h3>
                 </div>
                 <div class="sidebar-brand-text mx-3">
@@ -46,10 +50,10 @@
             <hr class="sidebar-divider my-0" />
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item ">
-                <a class="nav-link" href="/profile">
+            <li class="nav-item {{ request()->is('admin/dashboard') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.dashboard') }}">
                     <i class="fa-solid fa-user"></i>
-                    <span>Profile Admin</span></a>
+                    <span>Dashboard Admin</span></a>
             </li>
 
             <!-- Divider -->
@@ -59,8 +63,8 @@
             <div class="sidebar-heading">Interface</div>
 
             <!-- Nav Item - Home-->
-            <li class="nav-item">
-                <a class="nav-link" href="/">
+            <li class="nav-item {{ request()->is('admin/TableCustomer') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.table.customer') }}">
                     <i class="fa-solid fa-house"></i>
                     <span>Table Pelanggan</span>
                 </a>
@@ -208,16 +212,16 @@
                     </ul>
                 </nav>
                 <!-- End of Topbar -->
-
-                @yield('container')
-                @if ($message = Session::get('success'))
-                <div class="col-md-4">
+                @if ($message=Session::get('success'))
+                <div class="col-md-12">
                     <div class="alert alert-success alert-dismissible fade show" onclick="closeAlert()" role="alert">
                         <strong>{{ $message }}</strong>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 </div>
                 @endif
+                @yield('container')
+
 
 
                 <!-- Footer -->
@@ -239,24 +243,27 @@
             <i class="fas fa-angle-up"></i>
         </a>
 
+        {{-- SWEET ALERT --}}
+        <script src="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.min.js"></script>
+
         <script src="https://kit.fontawesome.com/198689d7a2.js" crossorigin="anonymous"></script>
 
         <!-- Bootstrap core JavaScript-->
-        <script src="../vendor/jquery/jquery.min.js"></script>
-        <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="../../../../vendor/jquery/jquery.min.js"></script>
+        <script src="../../../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
         <!-- Core plugin JavaScript-->
-        <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="../../../../vendor/jquery-easing/jquery.easing.min.js"></script>
 
         <!-- Custom scripts for all pages-->
-        <script src="../js/sb-admin-2.min.js"></script>
+        <script src="../../../../js/sb-admin-2.min.js"></script>
 
         <!-- Page level plugins -->
-        <script src="../vendor/chart.js/Chart.min.js"></script>
+        <script src="../../../../../vendor/chart.js/Chart.min.js"></script>
 
         <!-- Page level custom scripts -->
-        <script src="../js/demo/chart-area-demo.js"></script>
-        <script src="../js/demo/chart-pie-demo.js"></script>
+        <script src="../../../../js/demo/chart-area-demo.js"></script>
+        <script src="../../../../js/demo/chart-pie-demo.js"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous">

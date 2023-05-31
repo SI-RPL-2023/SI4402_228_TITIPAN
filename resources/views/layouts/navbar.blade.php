@@ -17,7 +17,7 @@
                 <li><a href="/home" class="nav-link {{ $active === 'Home' ? 'active' : '' }}">Home</a></li>
                 <li>
                     @elseif(!Auth::check())
-                <li><a href="/landingpage" class="nav-link {{ $active === 'landingpage' ? 'active' : '' }}">Home</a>
+                <li><a href="/" class="nav-link {{ $active === 'landingpage' ? 'active' : '' }}">Home</a>
                 </li>
                 @else
                 @endif
