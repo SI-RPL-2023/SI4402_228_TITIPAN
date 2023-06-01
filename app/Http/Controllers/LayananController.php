@@ -45,6 +45,42 @@ class LayananController extends Controller
             'layanan' => $layanan
         ]);
     }
+    function pembayaranpindahan()
+    {
+        $layanan = DB::table('layanan')
+        ->where('nama_layanan', 'pindahan')
+        ->select('nama_layanan', 'jenis_layanan', 'harga')
+        ->get();
+
+        return view ('/pembayaran-pindahan', [
+            'title' => 'pindahan',
+            'layanan' => $layanan
+        ]);
+    }
+    function pembayaranpengiriman()
+    {
+        $layanan = DB::table('layanan')
+        ->where('nama_layanan', 'pengiriman')
+        ->select('nama_layanan', 'jenis_layanan', 'harga')
+        ->get();
+
+        return view ('/pembayaran-pengiriman', [
+            'title' => 'pengiriman',
+            'layanan' => $layanan
+        ]);
+    }
+    function pembayaranpenyimpanan()
+    {
+        $layanan = DB::table('layanan')
+        ->where('nama_layanan', 'penyimpanan')
+        ->select('nama_layanan', 'jenis_layanan', 'harga')
+        ->get();
+
+        return view ('/pembayaran-penyimpanan', [
+            'title' => 'penyimpanan',
+            'layanan' => $layanan
+        ]);
+    }
 
 
 }
