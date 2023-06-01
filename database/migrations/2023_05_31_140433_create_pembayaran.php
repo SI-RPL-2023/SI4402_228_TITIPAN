@@ -13,19 +13,18 @@ return new class extends Migration
     {
         Schema::create('pembayaran', function (Blueprint $table) {
             $table->id();
-
-            $table->string('nama');
+            $table->unsignedBigInteger('id_user');
+            $table->unsignedBigInteger('id_layanan');
+            $table->date('tanggal_pembayaran');
+            $table->string('path_bukti_pembayaran');
+            $table->string('nama_user');
             $table->string('alamat');
-            $table->string('prov');
-            $table->string('kab');
-            $table->string('kode');
-            $table->string('jenis')->default('basic');
-            $table->string('nama_layanan');
-            $table->string('pembayaran')->default('dana');
-            
-            $table->softDeletes();
             $table->timestamps();
+            
+            $table->foreign('id_user')->references('id')->on('users');
+            $table->foreign('id_layanan')->references('id')->on('layanan');
         });
+
     }
 
     /**

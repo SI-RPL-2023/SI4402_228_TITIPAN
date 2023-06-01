@@ -83,7 +83,7 @@
                     <table class="table">
                             <td colspan="2">
                                 <form action="">
-                                    <a href="pembayaran" class="btn btn-lg btn-success w-100">Selesaikan
+                                    <a href="/detail-pembayaran-pengiriman/lakukan-pembayaran-pengiriman" class="btn btn-lg btn-success w-100">Selesaikan
                                         Pembayaran</a>
                                 </form>
                             </td>

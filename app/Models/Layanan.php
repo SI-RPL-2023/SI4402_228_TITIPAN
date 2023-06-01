@@ -11,13 +11,9 @@ class Layanan extends Model
     protected $table = 'layanan'; // Nama tabel yang sesuai dengan model
 
     protected $fillable = [
-        'nama',
-        'alamat',
-        'prov',
-        'kab',
-        'kode',
-        'jenis',
-        'pembayaran',
+        'nama_layanan',
+        'jenis_layanan',
+        'harga',
         // Kolom lain yang diperlukan
     ];
 }

@@ -70,9 +70,15 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/detail-pembayaran-pindahan',[LayananController::class,'showpindahan']);
     Route::get('/detail-pembayaran-penyimpanan',[LayananController::class,'showpenyimpanan']);
     Route::get('/detail-pembayaran-pengiriman',[LayananController::class,'showpengiriman']);
+
+    Route::get('/detail-pembayaran-pindahan/lakukan-pembayaran-pindahan',[LayananController::class,'pembayaranpindahan']);
+    Route::get('/detail-pembayaran-penyimpanan/lakukan-pembayaran-penyimpanan',[LayananController::class,'pembayaranpenyimpanan']);
+    Route::get('/detail-pembayaran-pengiriman/lakukan-pembayaran-pengiriman',[LayananController::class,'pembayaranpengiriman']);
+
     Route::get('/sesi/logout', [SessionController::class, 'logout']);
     Route::get('/detail-pembayaran', [SessionController::class, 'DetailPembayaran']);
     Route::get('/pembayaran', [SessionController::class, 'pembayaran']);
+    
 
 });
 // END CUSTOMER

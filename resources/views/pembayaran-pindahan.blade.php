@@ -6,8 +6,8 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- CSS -->
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/custom.css">
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/custom.css">
 
 	<title>Tiba-tiba pindahan</title>
 </head>
@@ -60,76 +60,55 @@
 			<div class="col-12">
 				<h1 class="text-judul-halaman">Pembayaran</h1>
 			</div>
-		</div>
+			</div>
 
 
 		<div class="row">
 			<!-- KOLOM 1 -->
 			<div class="col-md-7">
-				<form>
+				<form id="paymentForm" onsubmit="return calculateTotal()">
 					<h3 class="text-judul">Alamat Customer</h3>
 
 					<label class="w-100 mb-3">
 						Nama lengkap <br>
-						<input type="text" name="nama" required placeholder="Nama Lengkap" class="form-control">
+						<input value="{{ auth()->user()->name }}" type="text" name="nama" required placeholder="Nama Lengkap" class="form-control">
 					</label>
 					<label class="w-100 mb-3">
 						Alamat lengkap <br>
 						<input type="text" name="alamat" required placeholder="Jl.A, No 11" class="form-control">
 					</label>
-					<label class="w-100 mb-3">
-						Provinsi <br>
-						<input type="text" name="prov" required placeholder="Jawa barat" class="form-control">
-					</label>
-					<label class="w-100 mb-3">
-						Kabupaten / Kota <br>
-						<input type="text" name="kab" required placeholder="Bandung" class="form-control">
-					</label>
-					<label class="w-100 mb-3">
-						Kode POS <br>
-						<input type="number" name="kode" required placeholder="234123" class="form-control">
-					</label>
 
 					<h3 class="text-judul mt-5">Jenis Layanan</h3>
+					@foreach ($layanan as $item)
 					<label class="w-100 mb-3 border rounded p-2">
-						<input type="radio" name="basic">
-						<span>Basic</span>
-					</label>
-					<label class="w-100 mb-3 border rounded p-2">
-						<input type="radio" name="pre">
-						<span>Premium</span>
-					</label>
-					<label class="w-100 mb-3 border rounded p-2">
-						<input type="radio" name="adv">
-						<span>Advance</span>
-					</label>
-
-
-					<h3 class="text-judul mt-5">Metode Pembayaran</h3>
-					<label class="w-100 mb-3 border rounded p-2">
-						<input type="radio" name="tf">
-						Transfer Bank
-					</label>
-					<label class="w-100 mb-3 border rounded p-2">
-						<input type="radio" name="gopay">
-						<img src="images/bayar-1.png">
-					</label>
-					<label class="w-100 mb-3 border rounded p-2">
-						<input type="radio" name="dana">
-						<img src="images/bayar-2.png">
-					</label>
-					<label class="w-100 mb-3 border rounded p-2">
-						<input type="radio" name="ovo">
-						<img src="images/bayar-3.png">
-					</label>
-
-					<button type="submit" class="btn btn-lg btn-success mt-5 mb-5">Bayar</button>
-
+					<input class="form-check-input" type="radio" name="layanan" value="{{ $item->jenis_layanan }}" onclick="calculateTotal()">
+        			<label class="form-check-label">
+           				{{ $item->nama_layanan }} - {{ $item->jenis_layanan }} - Rp {{ number_format($item->harga, 0, ',', '.') }}
+        			</label>
+				</label>
+				@endforeach
+				
+				<h3 class="text-judul mt-5">Metode Pembayaran</h3>
+				<label class="w-100 mb-3 border rounded p-2">
+					<input type="radio" name="metode_pembayaran" value="transfer_bank" onclick="calculateTotal()">
+					Transfer Bank 
+				</label>
+				<label class="w-100 mb-3 border rounded p-2">
+					<input type="radio" name="metode_pembayaran" value="gopay" onclick="calculateTotal()">
+					<img src="../images/bayar-1.png">
+				</label>
+				<label class="w-100 mb-3 border rounded p-2">
+					<input type="radio" name="metode_pembayaran" value="dana" onclick="calculateTotal()">
+					<img src="../images/bayar-2.png">
+				</label>
+				<label class="w-100 mb-3 border rounded p-2">
+					<input type="radio" name="metode_pembayaran" value="ovo" onclick="calculateTotal()">
+					<img src="../images/bayar-3.png">
+				</label>
+				
+				<button type="submit" class="btn btn-lg btn-success mt-5 mb-5">Bayar</button>
 				</form>
 			</div>
-
-
-
 
 			<!-- KOLOM 2 -->
 			<div class="col-md-4 offset-md-1">
@@ -139,16 +118,16 @@
 					</div>
 					<div class="card-body">
 						<div class="row mt-2 mb-2">
-							<div class="col-md"><small>Sub Total</small></div>
-							<div class="col-md">IDR -</div>
+							<div class="col-md"><small>Jenis Layanan</small></div>
+							<div class="col-md" id="jenisLayanan"></div>
 						</div>
 						<div class="row mt-2 mb-2">
-							<div class="col-md"><small>Biaya pengiriman</small></div>
-							<div class="col-md">IDR -</div>
+							<div class="col-md"><small>Metode Pembayaran</small></div>
+							<div class="col-md" id="metodePembayaran"></div>
 						</div>
 						<div class="row mt-2 mb-2">
 							<div class="col-md"><small>Total</small></div>
-							<div class="col-md">IDR -</div>
+							<div class="col-md" id="total"></div>
 						</div>
 					</div>
 					<div class="card-footer">
@@ -158,14 +137,37 @@
 			</div>
 		</div>
 
-
-
-
 	</div> <!-- PENUTUP CONTAINER -->
 
 
 	<!-- JS -->
 	<script type="text/javascript" src="assets/js/bootstrap.bundle.min.js"></script>
+	<script>
+		function calculateTotal() {
+			var layanan = document.querySelector('input[name="layanan"]:checked').value;
+			var metodePembayaran = document.querySelector('input[name="metode_pembayaran"]:checked').value;
+			var total = 0;
+			// Hitung total berdasarkan jenis layanan
+			// Misalnya:
+			if (layanan === "basic") {
+				total = 800000;
+			} else if (layanan === "premium") {
+				total = 1000000;
+			} else if (layanan === "advance") {
+				total = 1500000;
+			}
+			// Tampilkan hasil perhitungan di tabel detail pembayaran
+			document.getElementById("jenisLayanan").innerText = layanan;
+			document.getElementById("metodePembayaran").innerText = metodePembayaran;
+			document.getElementById("total").innerText = "Rp " + total.toLocaleString();
+		}
+
+		document.getElementById("paymentForm").addEventListener("submit", function(event) {
+			event.preventDefault();
+			// Lakukan aksi setelah tombol Bayar ditekan
+			// Misalnya, lakukan proses pembayaran atau pengiriman data ke server
+		});
+	</script>
 </body>
 
 </html>
