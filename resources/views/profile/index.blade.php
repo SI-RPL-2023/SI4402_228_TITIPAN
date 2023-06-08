@@ -6,6 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 	<meta name="description" content="" />
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<meta name="author" content="" />
 
 	<title>{{ $title }} | Titipan - Jasa Pindahan & Pengiriman Terbaik</title>
@@ -21,6 +22,10 @@
 	{{-- css BOOTSTRAP --}}
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+	{{-- SWEET ALERT CSS --}}
+	{{--
+	<link rel="stylesheet" type="text/css" href="https://common.olemiss.edu/_js/sweet-alert/sweet-alert.css"> --}}
 
 	<!-- Custom styles for this template-->
 	<link href="css/sb-admin-2.min.css" rel="stylesheet" />
@@ -148,66 +153,7 @@
 							</div>
 						</li>
 
-						<!-- Nav Item - Alerts -->
-						<li class="nav-item dropdown no-arrow mx-1">
-							<a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<i class="fas fa-bell fa-fw"></i>
-								<!-- Counter - Alerts -->
-								<span class="badge badge-danger badge-counter">3+</span>
-							</a>
-							<!-- Dropdown - Alerts -->
-							<div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-								aria-labelledby="alertsDropdown">
-								<h6 class="dropdown-header">
-									Alerts Center
-								</h6>
-								<a class="dropdown-item d-flex align-items-center" href="#">
-									<div class="mr-3">
-										<div class="icon-circle bg-primary">
-											<i class="fas fa-file-alt text-white"></i>
-										</div>
-									</div>
-									<div>
-										<div class="small text-gray-500">
-											December 12, 2019
-										</div>
-										<span class="font-weight-bold">A new monthly report is ready
-											to download!</span>
-									</div>
-								</a>
-								<a class="dropdown-item d-flex align-items-center" href="#">
-									<div class="mr-3">
-										<div class="icon-circle bg-success">
-											<i class="fas fa-donate text-white"></i>
-										</div>
-									</div>
-									<div>
-										<div class="small text-gray-500">
-											December 7, 2019
-										</div>
-										$290.29 has been deposited into your
-										account!
-									</div>
-								</a>
-								<a class="dropdown-item d-flex align-items-center" href="#">
-									<div class="mr-3">
-										<div class="icon-circle bg-warning">
-											<i class="fas fa-exclamation-triangle text-white"></i>
-										</div>
-									</div>
-									<div>
-										<div class="small text-gray-500">
-											December 2, 2019
-										</div>
-										Spending Alert: We've noticed
-										unusually high spending for your
-										account.
-									</div>
-								</a>
-								<a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-							</div>
-						</li>
+
 
 						<div class="topbar-divider d-none d-sm-block"></div>
 
@@ -229,39 +175,63 @@
 					<!-- Page Heading -->
 					<div class="d-sm-flex align-items-center justify-content-between mb-4">
 						<h1 class="h3 mb-0 text-gray-800">Daftar Transaksi</h1>
-						<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-								class="fas fa-download fa-sm text-white-50"></i>
-							Generate Report</a>
 					</div>
 					<div class="container">
-						{{-- @if($pesanan->isEmpty())
-						<p>No transactions have been made by you so far, our services are ready for transactions.</p>
-						@else --}}
-						<table class="table">
+						@if ($message=Session::get('success'))
+						<div class="col-md-12">
+							<div class="alert alert-success alert-dismissible fade show" onclick="closeAlert()"
+								role="alert">
+								<strong>{{ $message }}</strong>
+								<button type="button" class="btn-close" data-bs-dismiss="alert"
+									aria-label="Close"></button>
+							</div>
+						</div>
+						@endif
+						<table class="table text-center">
 							<thead>
 								<tr>
 									<th>No</th>
 									<th>Nama</th>
 									<th>Alamat</th>
-									<th>No Telfon</th>
+									<th>Jenis Layanan</th>
 									<th>Jasa Layanan</th>
 									<th>Harga</th>
 									<th>Status Pesanan</th>
+									<th>Action</th>
 								</tr>
 							</thead>
 							<tbody>
-								{{-- @foreach($pesanan as $item)
+								@foreach($transactions as $transaction)
 								<tr>
-									<td>{{ $loop->iteration }}</td>
-									<td>{{ $item->nama }}</td>
-									<td>{{ $item->alamat }}</td>
-									<td>{{ $item->no_telfon }}</td>
-									<td>{{ $item->jasa_layanan }}</td>
-									<td>{{ $item->harga }}</td>
-									<td>{{ $item->status_pesanan }}</td>
+									<td style="vertical-align: middle;">{{ $loop->iteration }}</td>
+									<td style="vertical-align: middle;">{{ $transaction->nama_user }}</td>
+									<td style="vertical-align: middle;">{{ $transaction->alamat }}</td>
+									<td style="vertical-align: middle;">{{ $transaction->jenis_layanan }}</td>
+									<td style="vertical-align: middle;">{{ $transaction->nama_layanan }}</td>
+									<td style="vertical-align: middle;">{{ 'Rp ' . number_format($transaction->harga, 0,
+										',', '.') }}</td>
+									<td style="vertical-align: middle;">{{ $transaction->status }}</td>
+
+									<td class="text-center">
+										{{-- <a href=""><button type="button" class="btn btn-success mb-2"><i
+													class="fas fa-user-edit"></i>
+												Edit Order</button></a> --}}
+
+										<form id="cancelOrderForm{{ $transaction->id }}"
+											action="{{ route('cancel.order', $transaction->id) }}" method="POST">
+											@csrf
+											@method('PUT')
+
+											<button type="submit" class="btn btn-danger"
+												onclick="return confirm('Are you sure you want to cancel this order?')">
+												<i class="fas fa-strikethrough"></i> Cancel Order
+											</button>
+										</form>
+									</td>
 								</tr>
-								@endforeach --}}
+								@endforeach
 							</tbody>
+
 						</table>
 						{{-- @endif --}}
 					</div>
@@ -285,32 +255,10 @@
 				<i class="fas fa-angle-up"></i>
 			</a>
 
-			<!-- Logout Modal-->
-			<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-				aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLabel">
-								Ready to Leave?
-							</h5>
-							<button class="close" type="button" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">×</span>
-							</button>
-						</div>
-						<div class="modal-body">
-							Select "Logout" below if you are ready to end your
-							current session.
-						</div>
-						<div class="modal-footer">
-							<button class="btn btn-secondary" type="button" data-dismiss="modal">
-								Cancel
-							</button>
-							<a class="btn btn-primary" href="login.html">Logout</a>
-						</div>
-					</div>
-				</div>
-			</div>
+
+
+			{{-- SWEET ALERT --}}
+			<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 			<script src="https://kit.fontawesome.com/198689d7a2.js" crossorigin="anonymous"></script>
 
@@ -326,10 +274,6 @@
 
 			<!-- Page level plugins -->
 			<script src="vendor/chart.js/Chart.min.js"></script>
-
-			<!-- Page level custom scripts -->
-			<script src="js/demo/chart-area-demo.js"></script>
-			<script src="js/demo/chart-pie-demo.js"></script>
 
 			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
 				integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"

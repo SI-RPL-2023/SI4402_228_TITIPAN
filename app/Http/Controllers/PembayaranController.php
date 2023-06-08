@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pembayaran;
+use App\Models\Transaksi;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\ValidationException;
 
 class PembayaranController extends Controller
 {
@@ -26,32 +23,43 @@ class PembayaranController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function processPembayaranPengiriman(Request $request)
     {
-        // Kode untuk memproses data pembayaran yang dikirim melalui form
-        DB::table('pembayaran')->where('id', $request->id)->update([
-            'pembayaran'=> $request->pembayaran,
+        // Validasi input
+        $validatedData = $request->validate([
+            'nama_user' => 'required',
+            'alamat' => 'required',
+            'jenis_layanan' => 'required',
+            'nama_layanan' => 'required',
+            'harga' => 'required',
+            'jenis_pembayaran' => 'required',
+            'bukti_pembayaran' => 'required|file|mimes:png,jpeg,jpg',
         ]);
-        $request->validate([
-            'nama'=>'required',
-            'alamat'=>'required',
-            'prov'=>'required',
-            'kab'=>'required',
-            'kode'=>'required',
-            'jenis'=>'required',
-            'pembayaran'=>'required',
-        ]);
-        $data = [
-            'nama'=>$request->nama,
-            'alamat'=>$request->alamat,
-            'prov'=>$request-> prov,
-            'kab'=>$request->kab,
-            'kode'=>$request->kode,
-            'jenis'=>$request->jenis,
-            'pembayaran'=>$request->pembayaran,
-        ];
-        Pembayaran::create($data);
-        return back()->with('success', 'Terimakasih sudah percaya kepada kami!');
+
+        // Simpan bukti pembayaran ke storage
+        if ($request->hasFile('bukti_pembayaran')) {
+            $file = $request->file('bukti_pembayaran');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $path = $file->storeAs('/Users/imammuklas/Documents/LaravelApplication/SI4402_228_TITIPAN/public/images/BuktiPembayaran', $filename);
+        } else {
+            // Jika tidak ada file bukti pembayaran yang diunggah, berikan pesan error atau lakukan tindakan lainnya sesuai kebutuhan Anda.
+            return redirect()->back()->with('error', 'File bukti pembayaran tidak ditemukan.');
+        }
+
+        // Buat transaksi baru
+        $transaksi = new Transaksi();
+        $transaksi->id_user = $request->input('id_user');
+        $transaksi->id_layanan = $request->input('id_layanan');
+        $transaksi->tanggal_pembayaran = now()->toDateString();
+        $transaksi->path_bukti_pembayaran = $path;
+        $transaksi->nama_user = $request->input('nama_user');
+        $transaksi->alamat = $request->input('alamat');
+        $transaksi->jenis_pembayaran = $request->input('jenis_pembayaran');
+        $transaksi->status = 'pending';
+        $transaksi->save();
+
+        // Redirect atau berikan respons sesuai kebutuhan Anda
+        return redirect()->back()->with('success', 'Pembayaran berhasil diajukan. Menunggu konfirmasi.');
     }
 
     public function show($id)
@@ -74,4 +82,3 @@ class PembayaranController extends Controller
         // Kode untuk menghapus pembayaran dengan ID tertentu
     }
 }
-

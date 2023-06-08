@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Transaksi;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -12,9 +13,15 @@ class UpdateProfileController extends Controller
 {
     public function profile()
     {
-        return view('/profile.index', [
-            "title" => "Profile",
+        $transactions = Transaksi::join('layanan', 'transaksi.id_layanan', '=', 'layanan.id')
+            ->select('transaksi.*', 'layanan.nama_layanan', 'layanan.harga', 'layanan.jenis_layanan')
+            ->where('transaksi.id_user', auth()->id())
+            ->get();
+
+        return view('profile.index', [
+            'title' => 'Profile',
             'active' => 'profile',
+            'transactions' => $transactions,
         ]);
     }
 

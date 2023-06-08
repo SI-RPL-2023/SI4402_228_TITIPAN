@@ -129,8 +129,8 @@
                 </script>
                 @else
                 <div class="col-lg-8" style="margin-left: 1100px">
-                    <a class="btn btn-checkout btn-outline-light btn-lg" href="/detail-pembayaran-penyimpanan" role="button"
-                        target="_blank">Pesan
+                    <a class="btn btn-checkout btn-outline-light btn-lg" href="detail-pembayaran-penyimpanan"
+                        role="button" target="_blank">Pesan
                         Layanan</a>
                 </div>
                 @endif

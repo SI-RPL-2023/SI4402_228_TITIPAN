@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\SesiControllerAdmin;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\UpdateProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -37,12 +38,29 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
     Route::delete('/TableCustomer/{id}', [SesiControllerAdmin::class, 'destroy'])->name('customers.destroy');
 
     // Edit User
-    Route::get('TableCustomer/EditCustomer/{id}', [SesiControllerAdmin::class, 'EditUser'])->name('admin.edit-user');
+    Route::get('/TableCustomer/EditCustomer/{id}', [SesiControllerAdmin::class, 'EditUser'])->name('admin.edit-user');
     Route::put('/TableCustomer/EditCustomer/{id}', [SesiControllerAdmin::class, 'update'])->name('admin.proses.edit-user');
     Route::get('TableCustomer/EditCustomer/EditPassword/{id}', [SesiControllerAdmin::class, 'EditPassword'])->name('admin.edit-password.user');
     Route::put('TableCustomer/EditCustomer/EditPassword/{id}', [SesiControllerAdmin::class, 'updatePassword'])->name('admin.proses.edit-password');
 
-    Route::get('/sesi/logout', [SessionController::class, 'logout']);
+    // Edit Table Pelanggan
+    Route::get('/transactions', [SesiControllerAdmin::class, 'ShowTableTransaksi'])->name('transactions.index');
+
+    Route::get('transactions/DetailTransaction/{id}', [SesiControllerAdmin::class, 'DetailTransaksi'])->name('admin.detail-transaksi');
+    Route::put('transactions/UpdateTransaction/{id}', [SesiControllerAdmin::class, 'UpdateTransaksi'])->name('admin.update-transaksi');
+    Route::delete('transactions/DeleteTransaction/{id}', [SesiControllerAdmin::class, 'DeleteTransaksi'])->name('admin.delete-transaksi');
+
+    Route::put('/TableCustomer/EditCustomer/{id}', [SesiControllerAdmin::class, 'update'])->name('admin.proses.edit-user');
+
+    Route::put('/transactions/{transaction}', [SesiControllerAdmin::class, 'UpdateTableTransaksi'])->name('transactions.update');
+    Route::get('/bukti-pembayaran/{filename}', [SesiControllerAdmin::class, 'ShowBuktiPembayaran'])->name('bukti-pembayaran');
+
+    // layanan
+    Route::get('layanan', [SesiControllerAdmin::class, 'showLayanan'])->name('admin.show-layanan');
+    Route::get('/layanan/create', [SesiControllerAdmin::class, 'createLayanan'])->name('admin.create-layanan');
+    Route::post('/layanan/proses', [SesiControllerAdmin::class, 'storeLayanan'])->name('admin.store-layanan');
+
+    Route::get('/sesi/logout', [SesiControllerAdmin::class, 'logout'])->name('admin.logout');
 
 });
 // END ADMIN
@@ -58,28 +76,35 @@ Route::middleware(['auth'])->group(function () {
         });
 
         Route::prefix('profile')->group(function () {
-            Route::get('/', [UpdateProfileController::class, 'profile']);
+            Route::get('/', [UpdateProfileController::class, 'profile'])->name('profile.index');
             Route::get('edit-profile', [UpdateProfileController::class, 'editprofile']);
             Route::put('update', [UpdateProfileController::class, 'updateprofile'])->name('profile.update');
 
             Route::get('edit-password', [UpdateProfileController::class, 'EditPassword'])->name('profile.edit-password');
             Route::put('edit-password', [UpdateProfileController::class, 'UpdatePassword']);
         });
+
+        // Rute untuk proses Penyimpanan
+        Route::get('/detail-pembayaran-pindahan', [LayananController::class, 'showpindahan']);
+        Route::post('/pilih-layanan-pindahan/konfirmasi-pesanan', [LayananController::class, 'PilihLayananPindahan'])->name('konfimasi.pesanan.pindahan');
+
+        // Rute untuk proses Penyimpanan
+        Route::get('/detail-pembayaran-penyimpanan', [LayananController::class, 'showpenyimpanan']);
+
+        Route::post('/pilih-layanan-penyimpanan/konfirmasi-pesanan', [LayananController::class, 'PilihLayananPenyimpanan'])->name('konfimasi.pesanan.penyimpanan');
+
+        // Rute untuk proses pengiriman
+        Route::get('/pilih-layanan-pengiriman', [LayananController::class, 'showpengiriman']);
+
+        Route::post('/pilih-layanan-pengiriman/konfirmasi-pesanan', [LayananController::class, 'PilihLayananPengiriman'])->name('konfimasi.pesanan.pengiriman');
+
+        Route::post('/PilihLayananPengiriman/ProsesBayarPengiriman', [TransaksiController::class, 'processPembayaranPengiriman'])->name('process.pembayaran.pengiriman');
+
+        // CANCEL ORDER
+        Route::put('/cancel-order/{id}', [TransaksiController::class, 'cancelOrder'])->name('cancel.order');
+
+        Route::get('/sesi/logout', [SessionController::class, 'logout']);
     });
-
-    Route::get('/detail-pembayaran-pindahan',[LayananController::class,'showpindahan']);
-    Route::get('/detail-pembayaran-penyimpanan',[LayananController::class,'showpenyimpanan']);
-    Route::get('/detail-pembayaran-pengiriman',[LayananController::class,'showpengiriman']);
-
-    Route::get('/detail-pembayaran-pindahan/lakukan-pembayaran-pindahan',[LayananController::class,'pembayaranpindahan']);
-    Route::get('/detail-pembayaran-penyimpanan/lakukan-pembayaran-penyimpanan',[LayananController::class,'pembayaranpenyimpanan']);
-    Route::get('/detail-pembayaran-pengiriman/lakukan-pembayaran-pengiriman',[LayananController::class,'pembayaranpengiriman']);
-
-    Route::get('/sesi/logout', [SessionController::class, 'logout']);
-    Route::get('/detail-pembayaran', [SessionController::class, 'DetailPembayaran']);
-    Route::get('/pembayaran', [SessionController::class, 'pembayaran']);
-    
-
 });
 // END CUSTOMER
 
@@ -94,7 +119,7 @@ Route::get('/', function () {
     } else {
         return redirect('/admin/dashboard');
     }
-});
+})->name('landingpage');
 
 Route::get('/jasapindahan', function () {
     if (auth()->user() == null || auth()->user()->role == 'customer') {

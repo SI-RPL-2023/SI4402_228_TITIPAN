@@ -71,21 +71,21 @@
 
                 <!-- Nav Item - Jasa Pindahan -->
             <li class="nav-item">
-                <a class="nav-link" href="../jasapindahan">
+                <a class="nav-link" href="{{ route('transactions.index') }}">
                     <i class="fa-solid fa-truck-ramp-box"></i>
                     <span>Table Transaksi</span>
                 </a>
             </li>
 
-            <!-- Nav Penyimpanan -->
+            <!-- Nav jasa layanan -->
             <li class="nav-item">
-                <a class="nav-link" href="../jasapenyimpanan">
+                <a class="nav-link" href="{{ route('admin.show-layanan') }}">
                     <i class="fa-solid fa-truck-arrow-right"></i>
                     <span>Tambah Jasa Layanan</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="/sesi/logout">
+                <a class="nav-link" href="{{ route('admin.logout') }}">
                     <i class="fas fa-sign-out"></i>
                     <span>Logout</span></a>
             </li>
