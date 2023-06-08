@@ -9,6 +9,11 @@ body,
 input {
     font-family: "Poppins", sans-serif;
     overflow-x: hidden;
+    background-color: #3eaab3;
+}
+a.btn.dropdown-toggle::after {
+    color: #fff;
+    background-color: #fff;
 }
 
 /* Navbar styling */
@@ -245,6 +250,16 @@ form.sign-in-form {
 .social-media {
     display: flex;
     justify-content: center;
+}
+
+a.back-to-menu {
+    color: #333;
+    text-decoration: none;
+}
+
+a.back-to-menu:hover {
+    color: #3eabb3;
+    transition: 0.5s;
 }
 
 .social-icon {
@@ -503,6 +518,7 @@ form.sign-in-form {
     .panel .content {
         padding: 0.5rem 1rem;
     }
+
     .container {
         padding: 1.5rem;
     }

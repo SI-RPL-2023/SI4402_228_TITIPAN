@@ -13,15 +13,15 @@
 <div id="preloader "></div>
 
 <!-- Vendor JS Files -->
-<script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}} "></script>
-<script src="{{ asset('vendor/purecounter/purecounter_vanilla.js')}} "></script>
-<script src="{{ asset('vendor/glightbox/js/glightbox.min.js ')}}"></script>
-<script src="{{ asset('vendor/swiper/swiper-bundle.min.js')}} "></script>
-<script src="{{ asset('vendor/aos/aos.js')}} "></script>
-<script src="{{ asset('vendor/php-email-form/validate.js')}} "></script>
+<script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }} "></script>
+<script src="{{ asset('vendor/purecounter/purecounter_vanilla.js') }} "></script>
+<script src="{{ asset('vendor/glightbox/js/glightbox.min.js ') }}"></script>
+<script src="{{ asset('vendor/swiper/swiper-bundle.min.js') }} "></script>
+<script src="{{ asset('vendor/aos/aos.js') }} "></script>
+<script src="{{ asset('vendor/php-email-form/validate.js') }} "></script>
 
 <!-- Template Main JS File -->
-<script src="{{ asset('js/main.js')}} "></script>
+<script src="{{ asset('js/main.js') }} "></script>
 <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
@@ -71,7 +71,7 @@
                 </div>
 
                 <div class="col-lg-8">
-                    <img src="{{asset('images/pengiriman.jpg')}}" alt="" class="img-fluid services-img">
+                    <img src="{{ asset('images/pengiriman.jpg') }}" alt="" class="img-fluid services-img">
                     <h3>Sebelum menggunakan layanan kami yuk kenali apa itu "Jasa pengiriman" dan apa saja yang kamu
                         dapatkan ketika menggunakan layanan ini.</h3>
                     <p>
@@ -100,7 +100,38 @@
                         barang, serta layanan tambahan yang dipesan.
                     </p>
                 </div>
+                @if (!Auth::check())
+                <div class="col-lg-8" style="margin-left: 1100px">
+                    <a class="btn btn-checkout btn-outline-light btn-lg" href="#" role="button"
+                        onclick="showLoginAlert()">Pesan
+                        Layanan</a>
+                </div>
 
+                <script>
+                    function showLoginAlert() {
+                        Swal.fire({
+                        title: 'You need to Login First!',
+                        text: "You won't be able to revert this!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Login'
+                        }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = "/sesi";
+                        }
+                        })
+                    
+                    }
+                </script>
+                @else
+                <div class="col-lg-8" style="margin-left: 1100px">
+                    <a class="btn btn-checkout btn-outline-light btn-lg" href="pilih-layanan-pengiriman" role="button"
+                        target="_blank">Pesan
+                        Layanan</a>
+                </div>
+                @endif
             </div>
 
         </div>
