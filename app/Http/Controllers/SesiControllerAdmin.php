@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Layanan;
 use App\Models\Transaksi;
 use App\Models\User;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -212,7 +213,7 @@ class SesiControllerAdmin extends Controller
     {
         $transaction = Transaksi::join('users', 'transaksi.id_user', '=', 'users.id')
             ->join('layanan', 'transaksi.id_layanan', '=', 'layanan.id')
-            ->select('transaksi.*', 'users.name', 'users.email', 'users.phone_number', 'layanan.nama_layanan', 'layanan.harga')
+            ->select('transaksi.*', 'users.name', 'users.email', 'users.phone_number', 'layanan.nama_layanan', 'layanan.harga', 'layanan.jenis_layanan')
             ->find($id);
 
         if (!$transaction) {
@@ -273,6 +274,64 @@ class SesiControllerAdmin extends Controller
         Layanan::create($validatedData);
 
         return redirect()->route('admin.show-layanan')->with('success', 'Layanan berhasil ditambahkan');
+    }
+
+    public function editLayanan($id)
+    {
+        $layanan = Layanan::findOrFail($id);
+        $jenisLayananOptions = ['basic', 'premium', 'advance']; // Ganti dengan daftar nilai enum jenis layanan
+
+        return view('admin.edit-layanan', compact('layanan', 'jenisLayananOptions'), [
+            'title' => 'Edit Layanan',
+        ]);
+    }
+
+    public function updateLayanan(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'nama_layanan' => 'required',
+            'harga' => 'required|numeric',
+            'jenis_layanan' => 'required',
+        ]);
+
+        $layanan = Layanan::findOrFail($id);
+        $layanan->nama_layanan = $validatedData['nama_layanan'];
+        $layanan->harga = $validatedData['harga'];
+        $layanan->jenis_layanan = $validatedData['jenis_layanan'];
+        $layanan->save();
+
+        return redirect()->route('admin.show-layanan')->with('success', 'Layanan berhasil diupdate');
+    }
+
+    public function deleteLayanan($id)
+    {
+        try {
+            $layanan = Layanan::findOrFail($id);
+            $layanan->delete();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Layanan deleted successfully.',
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Failed to delete layanan.',
+            ]);
+        }
+    }
+
+    public function exportTransaksi()
+    {
+        $transactions = Transaksi::join('users', 'transaksi.id_user', '=', 'users.id')
+            ->join('layanan', 'transaksi.id_layanan', '=', 'layanan.id')
+            ->select('transaksi.nama_user', 'transaksi.alamat', 'users.phone_number', 'layanan.harga', 'layanan.nama_layanan', 'transaksi.tanggal_pembayaran', 'transaksi.status')
+            ->get();
+
+        // $totalHarga = Layanan::sum('harga');
+
+        $pdf = PDF::loadView('Admin.export-transaksi', compact('transactions'));
+        return $pdf->download('transaksi.pdf');
     }
 
     public function logout()
