@@ -70,7 +70,7 @@
                 </a>
 
                 <!-- Nav Item - Jasa Pindahan -->
-            <li class="nav-item">
+            <li class="nav-item {{ request()->is('admin/transactions') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('transactions.index') }}">
                     <i class="fa-solid fa-truck-ramp-box"></i>
                     <span>Table Transaksi</span>
@@ -78,7 +78,7 @@
             </li>
 
             <!-- Nav jasa layanan -->
-            <li class="nav-item">
+            <li class="nav-item {{ request()->is('admin/layanan') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('admin.show-layanan') }}">
                     <i class="fa-solid fa-truck-arrow-right"></i>
                     <span>Tambah Jasa Layanan</span></a>
