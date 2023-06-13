@@ -46,7 +46,12 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
     // Edit Table Pelanggan
     Route::get('/transactions', [SesiControllerAdmin::class, 'ShowTableTransaksi'])->name('transactions.index');
 
+    // transaksi table
+
     Route::get('transactions/DetailTransaction/{id}', [SesiControllerAdmin::class, 'DetailTransaksi'])->name('admin.detail-transaksi');
+
+    Route::get('/export-transaksi', [SesiControllerAdmin::class, 'exportTransaksi'])->name('export.transaksi');
+
     Route::put('transactions/UpdateTransaction/{id}', [SesiControllerAdmin::class, 'UpdateTransaksi'])->name('admin.update-transaksi');
     Route::delete('transactions/DeleteTransaction/{id}', [SesiControllerAdmin::class, 'DeleteTransaksi'])->name('admin.delete-transaksi');
 
@@ -59,6 +64,9 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
     Route::get('layanan', [SesiControllerAdmin::class, 'showLayanan'])->name('admin.show-layanan');
     Route::get('/layanan/create', [SesiControllerAdmin::class, 'createLayanan'])->name('admin.create-layanan');
     Route::post('/layanan/proses', [SesiControllerAdmin::class, 'storeLayanan'])->name('admin.store-layanan');
+    Route::delete('/layanan/{id}', [SesiControllerAdmin::class, 'deleteLayanan'])->name('admin.delete-layanan');
+    Route::get('/layanan/{id}/edit', [SesiControllerAdmin::class, 'editLayanan'])->name('admin.edit-layanan');
+    Route::put('/layanan/{id}', [SesiControllerAdmin::class, 'updateLayanan'])->name('admin.update-layanan');
 
     Route::get('/sesi/logout', [SesiControllerAdmin::class, 'logout'])->name('admin.logout');
 
