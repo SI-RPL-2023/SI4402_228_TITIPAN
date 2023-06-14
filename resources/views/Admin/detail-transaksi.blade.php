@@ -40,9 +40,10 @@
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Tanggal Pemesanan</label>
-            <input type="date" class="form-control @error('date_birth') is-invalid @enderror" id="exampleInputEmail1"
-                name="date_birth" value="{{ $transaction->tanggal_pembayaran }}" readonly>
-            @error('date_birth')
+            <input type="date" class="form-control @error('tanggal_pembayaran') is-invalid @enderror"
+                id="exampleInputEmail1" name="tanggal_pembayaran" value="{{ $transaction->tanggal_pembayaran }}"
+                readonly>
+            @error('tanggal_pembayaran')
             <div class="invalid-feedback">
                 {{ $message }}
             </div>
@@ -80,9 +81,20 @@
 
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Total Harga</label>
-            <input type="number" class="form-control @error('phone_number') is-invalid @enderror"
-                id="exampleInputEmail1" name="phone_number" value="{{ $transaction->harga}}" readonly>
-            @error('phone_number')
+            <input type="number" class="form-control @error('harga') is-invalid @enderror" id="exampleInputEmail1"
+                name="harga" value="{{ $transaction->harga}}" readonly>
+            @error('harga')
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+            @enderror
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Jenis Layanan</label>
+            <input type="text" class="form-control @error('jenis_layanan') is-invalid @enderror" id="exampleInputEmail1"
+                name="jenis_layanan" value="{{ $transaction->jenis_layanan}}" readonly>
+            @error('jenis_layanan')
             <div class="invalid-feedback">
                 {{ $message }}
             </div>
